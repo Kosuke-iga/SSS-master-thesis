@@ -1,0 +1,13 @@
+*.aux
+*.dvi
+make
+*_latexmk
+*.fls
+*.log
+*.gz
+*.bbl
+*.blg
+*.lof
+*.lot
+*.sty
+*.toc
