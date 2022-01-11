@@ -1,0 +1,64 @@
+\documentstyle[12pt,graphicx, multirow, amssymb, cite, graphicx, afterpage]{mst}
+
+% \documentclass[12pt,oneside]{mst}
+% \usepackage{thesis}
+% \usepackage{multirow}
+% \usepackage{amssymb}
+\date{}
+\renewcommand{\baselinestretch}{1.7}
+\setlength{\textwidth}{14cm}
+\setlength{\oddsidemargin}{0.5in}
+\setlength{\evensidemargin}{0.5in}
+\setlength{\topmargin}{0in}
+\setlength{\textheight}{9in}
+\font\itb=cmbxsl10 scaled \magstep1
+
+\renewcommand\floatpagefraction{.001}
+\makeatletter
+\setlength\@fpsep{\textheight}
+\makeatother
+
+\newcommand{\lw}[1]{\smash{\lower2.ex\hbox{#1}}} 
+\newcommand{\DANGEROUSPERMISSION}{P_{\mathrm{dangerous}}}
+\newcommand{\APPPERMISSION}{P_{\mathrm{app}}} 
+\newcommand{\MALWARETRAIN}{M_{\mathrm{train}}} 
+\newcommand{\MALWARETRAINPERMISSION}{M_{\mathrm{p_i}}} 
+\newcommand{\WEIGHT}{W_{\mathrm{permission}}} 
+\newcommand{\PERMISSIONINTER}{P_{\mathrm{final}}} 
+\newcommand{\FSSL}{f_{\mathrm{SSL}}} 
+\newcommand{\tablename}{Table } 
+\newcommand{\figurename}{Figure } 
+
+
+\newcommand{\NUMFILE}[1]{n_{#1}} 
+\newcommand{\FEATUREKEY}{K} 
+% \newcommand{\PAPERTITLE}{Malicious Android Application Detection Scheme using Feature Based on Destination Server and Level of SSL Server Certificate} 
+\newcommand{\PAPERTITLE}{Malicious Android malware Detection Scheme using Feature Based on Destination Servers and Level of SSL Server Certificate} 
+\newcommand{\We}{I } 
+\newcommand{\we}{I } 
+\newcommand{\our}{my } 
+\newcommand{\Our}{My } 
+
+
+\begin{document}
+\input{doc/0_cover}
+\input{doc/0_abstract}
+\input{doc/0_list}
+\input{doc/0_acknow}
+
+\newpage
+\pagenumbering{arabic}
+\rm\normalsize
+
+\input{doc/1_intro}
+\input{doc/2_related}
+\input{doc/3_previous}
+\input{doc/4_proposed}
+\input{doc/5_evaluation}
+\input{doc/6_conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{ref}
+% \input{doc/7_refer}
+\input{doc/8_appendix}
+\end{document}

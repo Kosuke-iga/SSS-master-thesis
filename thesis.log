@@ -1,0 +1,302 @@
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2016.8.23)  23 JAN 2019 06:16
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**thesis.tex
+(./thesis.tex
+pLaTeX2e <2016/05/07> (based on LaTeX2e <2016/03/31>)
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+(/usr/local/texlive/2016/texmf-dist/tex/platex/base/pl209.def
+Entering pLaTeX 2.09 compatibility mode.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/latex209.def
+File: latex209.def 2015/02/22 v0.53 Standard LaTeX file
+
+
+          Entering LaTeX 2.09 COMPATIBILITY MODE
+ *************************************************************
+    !!WARNING!!    !!WARNING!!    !!WARNING!!    !!WARNING!!   
+ 
+ This mode attempts to provide an emulation of the LaTeX 2.09
+ author environment so that OLD documents can be successfully
+ processed. It should NOT be used for NEW documents!
+ 
+ New documents should use Standard LaTeX conventions and start
+ with the \documentclass command.
+ 
+ Compatibility mode is UNLIKELY TO WORK with LaTeX 2.09 style
+ files that change any internal macros, especially not with
+ those that change the FONT SELECTION or OUTPUT ROUTINES.
+ 
+ Therefore such style files MUST BE UPDATED to use
+          Current Standard LaTeX: LaTeX2e.
+ If you suspect that you may be using such a style file, which
+ is probably very, very old by now, then you should attempt to
+ get it updated by sending a copy of this error message to the
+ author of that file.
+ *************************************************************
+
+\footheight=\dimen118
+\@maxsep=\dimen119
+\@dblmaxsep=\dimen120
+\@cla=\count81
+\@clb=\count82
+\mscount=\count83
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/tracefnt.sty
+Package: tracefnt 2015/02/21 v3.0k Standard LaTeX package (font tracing)
+\tracingfonts=\count84
+LaTeX Info: Redefining \selectfont on input line 106.
+)
+\symbold=\mathgroup4
+\symsans=\mathgroup5
+\symtypewriter=\mathgroup6
+\symitalic=\mathgroup7
+\symsmallcaps=\mathgroup8
+\symslanted=\mathgroup9
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 268.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 269.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 270.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 276.
+LaTeX Info: Redefining \em on input line 286.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup10
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+)
+LaTeX Font Info:    Redeclaring math delimiter \lgroup on input line 332.
+LaTeX Font Info:    Redeclaring math delimiter \rgroup on input line 334.
+LaTeX Font Info:    Redeclaring math delimiter \bracevert on input line 336.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/platex/base/ptrace.sty
+Package: ptrace 2016/04/30 v1.6b Standard pLaTeX package (font tracing)
+LaTeX Info: Redefining \selectfont on input line 36.
+\adjust@box=\box41
+\adjust@dimen=\dimen121
+)
+\symmincho=\mathgroup11
+\symgothic=\mathgroup12
+LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
+(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 51.
+LaTeX Info: Redefining \bf on input line 65.
+LaTeX Info: Redefining \rm on input line 72.
+LaTeX Info: Redefining \sf on input line 73.
+LaTeX Info: Redefining \sl on input line 74.
+LaTeX Info: Redefining \sc on input line 75.
+LaTeX Info: Redefining \it on input line 76.
+LaTeX Info: Redefining \tt on input line 77.
+LaTeX Info: Redefining \em on input line 78.
+)
+Compatibility mode: loading mst.sty rather than mst.cls.
+ (./mst.sty
+Document Style `report' <12 Nov. 93> by T. SABA.
+\descriptionmargin=\dimen122
+\c@part=\count85
+\c@chapter=\count86
+\c@section=\count87
+\c@subsection=\count88
+\c@subsubsection=\count89
+\c@paragraph=\count90
+\c@subparagraph=\count91
+\c@figure=\count92
+\c@table=\count93
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen123
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks15
+\symAMSa=\mathgroup13
+\symAMSb=\mathgroup14
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 332.
+Package: cite 2015/02/27  v 5.5
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/05/09 v1.0r Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/01/02 v1.10 sample graphics configuration
+)
+Package graphics Info: Driver file: dvips.def on input line 96.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/dvips.def
+File: dvips.def 2015/12/30 v3.0k Driver-dependent file (DPC,SPQR)
+))
+\Gin@req@height=\dimen124
+\Gin@req@width=\dimen125
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/afterpage.sty
+Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
+\AP@output=\toks17
+\AP@partial=\box42
+\AP@footins=\box43
+)
+(./thesis.aux)
+\openout1 = `thesis.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+ (./doc/0_cover.tex
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <17.28> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 8.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <17.28> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 8.
+LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
+(Font)              using `JT1/mc/m/n' instead on input line 20.
+LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
+(Font)              using `JY1/mc/m/n' instead on input line 20.
+) (./doc/0_abstract.tex) (./doc/0_list.tex
+[1
+
+] [2]
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <24.88> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 6.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <24.88> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 6.
+ (./thesis.toc
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 4.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 4.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 4.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Warning: Font shape `JT1/mc/m/sl' undefined
+(Font)              using `JT1/mc/m/n' instead on input line 19.
+LaTeX Font Warning: Font shape `JY1/mc/m/sl' undefined
+(Font)              using `JY1/mc/m/n' instead on input line 19.
+ [1
+
+])
+\tf@toc=\write3
+\openout3 = `thesis.toc'.
+
+ [2]
+(./thesis.lof)
+\tf@lof=\write4
+\openout4 = `thesis.lof'.
+
+ [3] (./thesis.lot)
+\tf@lot=\write5
+\openout5 = `thesis.lot'.
+
+) (./doc/0_acknow.tex [4]) [5
+
+]
+(./doc/1_intro.tex
+Chapter 1.
+[1
+
+] [2]) (./doc/2_related.tex [3]
+Chapter 2.
+[4
+
+] [5] [6] [7]) (./doc/3_previous.tex
+Chapter 3.
+[8
+
+]) (./doc/4_proposed.tex [9]
+Chapter 4.
+[10
+
+]
+File: ./figures/dv_unknown_inspection_tikz.pdf Graphic file (type eps)
+ <./figures/dv_unknown_inspection_tikz.pdf> [11] [12] [13
+
+]
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 64.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 64.
+ [14] [15])
+(./doc/5_evaluation.tex [16]
+Chapter 5.
+[17
+
+] [18] [19] [20] [21]
+File: ./figures/important_prev_f_tikz.pdf Graphic file (type eps)
+ <./figures/important_prev_f_tikz.pdf> [22
+
+] [23]
+[24
+
+] [25] [26
+
+]) (./doc/6_conclusion.tex [27
+
+]
+Chapter 6.
+) (./thesis.bbl [28
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 25--27
+[]\OT1/cmr/m/n/12 IDC, ``Smart-phone os mar-ket share, 2018 q3,'' Avail-able:
+ []
+
+LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
+(Font)              using `JT1/gt/m/n' instead on input line 31.
+LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
+(Font)              using `JY1/gt/m/n' instead on input line 31.
+[29
+
+] [30]) (./doc/8_appendix.tex [31]
+Appendix A.
+[32
+
+]) [33] (./thesis.aux)
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+ ) 
+Here is how much of TeX's memory you used:
+ 1266 strings out of 493693
+ 15765 string characters out of 6149787
+ 78385 words of memory out of 5000000
+ 4765 multiletter control sequences out of 15000+600000
+ 25334 words of font info for 98 fonts, out of 8000000 for 9000
+ 929 hyphenation exceptions out of 8191
+ 29i,12n,26p,327b,353s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on thesis.dvi (40 pages, 67220 bytes).

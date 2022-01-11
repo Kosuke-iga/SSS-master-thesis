@@ -1,0 +1,11 @@
+\RequirePackage 
+\section*{Abstract}\markright{Abstract}
+%\addcontentsline{toc}{chapter}{Abstract}
+
+Recently, a botnet based DDoS (Distributed Denial of Service) attack, called target link flooding attack, has been reported.
+This attack cuts off specific links over the Internet and disconnects a specific region from other regions.
+Detecting or mitigating the target link flooding attack is more difficult than legacy DDoS attack techniques, since attacking flows do not reach the target region. 
+Although many countermeasures have been proposed, no schemes can detect before it occurs.
+In this paper, we propose a target link flooding attack prevention scheme by monitoring the number of traceroute packets at routers, since we notice that an attacker must send a large number of traceroute packets to decide target links. 
+%Moreover, by analyzing the characteristic of the target link flooding attack that the number of traceroute packets simultaneously increases in various regions over the network, we propose a detection scheme with multiple detection servers to eliminate false alarms caused by sudden increase of traceroute packets sent by legitimate users.
+We show the effectiveness of our scheme by computer simulations.

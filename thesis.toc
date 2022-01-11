@@ -1,0 +1,26 @@
+\contentsline {chapter}{Acknowledgments}{v}
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {chapter}{\numberline {2}Related Work}{4}
+\contentsline {section}{\numberline {2.1}Required resource based detection}{4}
+\contentsline {section}{\numberline {2.2}Network based detection}{6}
+\contentsline {chapter}{\numberline {3}Previous Scheme}{8}
+\contentsline {section}{\numberline {3.1}Overview of the previous scheme}{8}
+\contentsline {section}{\numberline {3.2}Shortcoming of the previous scheme }{9}
+\contentsline {chapter}{\numberline {4}Proposed Scheme}{10}
+\contentsline {section}{\numberline {4.1}idea}{10}
+\contentsline {section}{\numberline {4.2}Algorithm}{14}
+\contentsline {subsection}{\numberline {4.2.1}Network Traffic Collection}{14}
+\contentsline {subsection}{\numberline {4.2.2}The Level of SSL Server Certificate identification}{14}
+\contentsline {subsection}{\numberline {4.2.3}SSL Server Certificate based Feature Generation}{15}
+\contentsline {subsection}{\numberline {4.2.4}Permission based weight assignment}{15}
+\contentsline {chapter}{\numberline {5}Evaluation}{17}
+\contentsline {section}{\numberline {5.1}Simulation Parameters}{19}
+\contentsline {section}{\numberline {5.2}Comparison with the previous scheme}{22}
+\contentsline {section}{\numberline {5.3}Evaluation of permission base weight values}{25}
+\contentsline {section}{\numberline {5.4}False Positive Analysis}{26}
+\contentsline {section}{\numberline {5.5}False Negative Analysis}{27}
+\contentsline {chapter}{\numberline {6}Conclusions}{28}
+\contentsline {chapter}{References}{29}
+\contentsline {chapter}{\numberline {A}List of the Related Papers by the Author}{32}
+\contentsline {section}{\numberline {A.1}International Conference Papers}{32}
+\contentsline {section}{\numberline {A.2}Technical Reports}{33}

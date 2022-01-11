@@ -1,0 +1,84 @@
+\documentclass{standalone} 
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes, automata, arrows}
+\usetikzlibrary{shapes.geometric}
+\usepackage{pgfplots}
+\usepackage{latexsym}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+% \pgfplotsset{compat=latest}
+\usepackage{amsmath}
+\usepackage[varg]{txfonts}
+\usepackage{pgfplotstable}
+\usetikzlibrary{patterns}
+\def\minYear{1987}
+\def\maxYear{2014}
+\def\xmin{\minYear-1900-0.5}
+\def\xmax{\maxYear-1900+0.5}
+\pgfplotsset{compat=1.13}  % PGFPlots 1.13の機能セットを使用することを宣言
+
+\begin{document}
+\pgfplotsset{
+	select row/.style={
+		x filter/.code={\ifnum\coordindex=#1\else\def\pgfmathresult{}\fi}
+	}
+}
+\pgfplotstableread[col sep=comma,header=false]{
+	0-0.1,13
+	0.1-0.2,21
+	0.2-0.3,712
+	0.3-0.4,3425
+	0.4-0.5,961
+	0.5-0.6,206
+	0.6-0.7,37
+	0.7-0.8,22
+	0.8-0.9,17
+	0.9-1,86
+		% 2013/14(YTD),97
+}\mal
+
+\pgfplotstableread[col sep=comma,header=false]{
+	0-0.1,747
+	0.1-0.2,571
+	0.2-0.3,1504
+	0.3-0.4,719
+	0.4-0.5,12
+	0.5-0.6,5
+	0.6-0.7,4
+	0.7-0.8,2
+	0.8-0.9,0
+	0.9-1,0
+		% 2013/14(YTD),97
+}\leg
+
+\begin{tikzpicture}[scale=1.0]
+	\begin{axis}[
+      ybar, bar shift=0pt,
+      enlarge y limits=0.0,
+      ytick={0,500, 1000, 1500, 2000, 2500, 3000, 3500}, 
+			% xmin=0,
+			xtick={0,...,9},
+			% xtick={0.5,...,9}, 
+			xticklabels from table={\mal}{0},
+      ymajorgrids = true,
+			bar width=3mm, 
+			width=11cm, height=7cm, 
+			xlabel={Score},
+			ylabel={The number of PDF},
+      x tick label style={font=\footnotesize,rotate=45, anchor=east},
+    nodes near coords align={horizontal}
+  ]
+		\pgfplotsinvokeforeach{0,...,9}{
+      \addplot [gray, pattern=north west lines, shift={(-1.5mm,0)}, legend image post style={xshift=1.5mm}] table [x expr=\coordindex, select row=#1] {\leg}; 
+      \addplot [gray, fill, shift={(1.5mm,0)}, legend image post style={xshift=-1.5mm}] table [x expr=\coordindex, select row=#1] {\mal}; 
+		}
+    \addlegendentry{Legitimate PDF}; 
+    \addlegendentry{Malicious PDF}; 
+		% \node[
+				% pin={[pin distance=1cm, pin edge={<-,>=stealth'},
+					% shift={(3.2cm,-1.0cm)}]
+      % Malicious features}] at (axis cs:3.3,2000) {};
+	\end{axis}
+\end{tikzpicture}
+
+\end{document}

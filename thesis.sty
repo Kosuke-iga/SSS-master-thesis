@@ -1,0 +1,137 @@
+%===============================================%
+%  FILENAME     :  thesis.sty                   %
+%  DESCRIPTION  :  卒論用LaTeXスタイルファイル  %
+%                                               %
+%  AUTHOR       :  Shinji Kano                  %
+%  DATE         :  Jan. 30, 2010                %
+%===============================================%
+
+
+
+\NeedsTeXFormat{pLaTeX2e}
+\ProvidesPackage{thesis}[2009/12/21 Thesis Style]
+
+% definitions
+\def\title#1{\def\@title{#1}}
+\def\author#1{\def\@author{#1}}
+\def\date#1{\def\@date{#1}}
+\def\department#1{\def\@department{#1}}
+\def\schoolyear#1{\def\@schoolyear{#1}}
+\def\stnumber#1{\def\@stnumber{#1}}
+\def\laboratory#1{\def\@laboratory{#1}}
+\def\supervisor#1{\def\@supervisor{#1}}
+\def\degree#1{\def\@degree{#1}}
+
+\renewcommand\maketitle{
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \begingroup
+      \def\baselinestretch{1}
+      \@normalsize
+%      \topmargin=1.25in
+      \topmargin=0.75in
+      \headheight=0pt
+      \headsep=0pt
+      \@tempdima=\paperwidth
+      \advance\@tempdima by -\textwidth
+      \divide\@tempdima by 2
+      \advance\@tempdima by -1in
+      \oddsidemargin=\@tempdima
+      \let\evensidemargin=\oddsidemargin
+      \newcommand\@large{\@setfontsize\large\@xivpt{18}}
+      \newcommand\@Large{\@setfontsize\Large\@xviipt{22}}
+      \newcommand\@LARGE{\@setfontsize\LARGE\@xxpt{25}}
+      \newcommand\@huge{\@setfontsize\huge\@xxvpt{30}}
+      \begin{center}
+        %
+        % \vbox to のあとの数値を変更すればレイアウトの微調整ができる
+        %
+        \vbox to 1.1in{%
+          \vfil
+%          {\@Large \@schoolyear 度 \@degree 論文}\\
+          {\@Large \@degree 論文}\\
+          \vfil}%
+        \vbox to 3.0in{%
+%          {\@huge \@title}\\
+          {\@LARGE \@title}\\
+          \vfil}%
+%        \vbox to 1.8in{%
+        \vbox to 1.5in{%
+          {\@Large \@department}\\[8pt]
+          {\@Large \@laboratory}\\[8pt]
+          {\@Large 学籍番号 : \@stnumber}\\[12pt]
+          \vfil}%
+%        \vbox to 3.0in{%
+        \vbox to 1.5in{%
+          {\@LARGE \@author}\\[12pt]
+          {\@LARGE 提出 \@date}\\
+          \vfil}%
+        \vbox to 0.5in{%
+          {\@large 指導教員 : \@supervisor}\\
+          \vfil}%
+      \end{center}
+    \endgroup
+  \end{titlepage}
+}
+
+\def\abstract{%
+\chapter*{概要}}
+%\def\endabstract{\thispagestyle{empty}}
+
+\def\acknowledgments{%
+\chapter*{謝辞}}
+%\def\endacknowledgments{\thispagestyle{empty}}
+
+\def\bibname{参考文献}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% New style
+
+% ヘッダの出力を編集．
+\def\ps@headings{\let\ps@jpl@in\ps@headnombre
+  \let\@oddfoot\@empty
+  \let\@evenfoot\@empty
+  \def\@evenhead{%
+     \underline{\hbox to\textwidth{\thepage\hfil\leftmark}}}%
+  \def\@oddhead{%
+     \underline{\hbox to\textwidth{\rightmark\hfil\thepage}}}%
+  \let\@mkboth\markboth
+}
+
+\pagestyle{headings} % ページ番号をヘッダに出力する．
+
+% Warningを消すために必要
+% jtygm.styのダウンロードが必要 (http://auemath.aichi-edu.ac.jp/~khotta/ghost/disk1/jtygm.lzh)
+%\usepackage{jtygm}
+
+% 目次に載せる見出しのレベルをsectionまでにする．
+\setcounter{tocdepth}{1}
+
+%\renewcommand{\baselinestretch}{1.35} % 行間を調整
+\renewcommand{\baselinestretch}{1.4} % 行間を調整
+
+% chapterの表示形式を変更
+% \@chapapp="第", \thechapter = "章番号", \@chappos = "章"
+\def\@makechapterhead#1{\hbox{}%
+  \vskip2\Cvs
+  {\parindent\z@
+    \raggedright
+    \reset@font\Huge\bfseries
+    \ifnum \c@secnumdepth >\m@ne
+      \setlength\@tempdima{\linewidth}%
+      \if@mainmatter
+        \setbox\z@\hbox{\@chapapp\thechapter\@chappos\hskip1zw}%
+        %\addtolength\@tempdima{-\wd\z@}% これで縦箱の長さが行幅と同じになります。
+        \unhbox\z@\par%%%%\parとすることで章番号とタイトルが分離。
+      \fi
+      \vspace*{40pt}
+      \vtop{\hsize\@tempdima#1}%章のタイトル出力
+    \fi
+  }
+  \vskip3\Cvs
+}
+
+% 図を二つ並べるために必要
+% \usepackage{subfigure}
+

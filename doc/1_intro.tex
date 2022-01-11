@@ -1,0 +1,51 @@
+\chapter{Introduction}\markright{Chapter 1: Introduction}\label{Sec:Introduction}
+
+Android is the most popular smartphone platform occupying 85\% of market share in the world \cite{share}.
+Unfortunately, smartphones running on Android system have become the main target of attackers due to its popularity.
+Most malwares send sensitive information such as contact lists, SMS messages, GPS and device information to external servers via network. 
+The Android aaps released on Google Play which is the official store of apps are automatically evaluated because manual evaluation spends a lot of personnel expenses and more time.
+Since such evaluation cannot completely prevent malwares from spreading, users are under the risk of installing malwares.
+Thus, this circumstance results in the urgency of detecting Android malwares.
+
+Existing solutions for detecting malwares are mainly classified into required resource based schemes \cite{enck2009lightweight, deshotels2014droidlegacy, xu2016iccdetector, sun2017monet} and network based schemes \cite{wang2018detecting, garg2017network}.
+Required resource based schemes are conducted by utilizing the features extracted from required resource such as permissions and application programming interface (API) calls.
+These schemes focus on the fact that malwares have to utilize required resource regarding malicious actions.
+Although required resource based schemes are useful, these schemes are subject to clever techniques such as dynamic code loading \cite{arora2018ntpdroid} and transformation attack \cite{zheng2012adam} \cite{rastogi2013droidchameleon}.
+
+In order to cope with the limitations of required resource based schemes, some researchers propose network based schemes.
+Network besed schemes pay attention to the fact that there exists strong evidence of malwares in network traffic data since most malwares communicate with external network to conduct malicious actions.
+These schemes can detect the malwares which use network to conduct malicious actions by using features regarding network behavior of Android apps.
+Although, several network based schemes have been proposed, \we pay attention to the scheme proposed by Garg et al. \cite{garg2017network}.
+This is because that scheme can deal with encrypted traffic data.
+More and more malwares tend to interact with external networks by using encrypted traffic in order to hide malicious payloads.
+Thus, it is necessary to extract useful features from malwares without deep packet inspection.
+That scheme leverages the fact that there exists the difference of network traffic patterns between benign apps and malwares.
+Network traffic pattern based features extracted from traffic data of running apps are fed into machine learning classifier, and it detects malwares.
+Although that shcme is a promising approach due to applicability to encrypted traffic data, traffic pattern based features are easy to be disguised by attackers.
+Hence, the malwares whose traffic patterns are similar to that of benign apps can evade that scheme.
+
+In order to detect such malwares by using the features that can deal with encrypted traffic data and are hard to be disguised, in this paper, \we propose a detection scheme using features based on destination servers and the level of SSL server certificate.
+The main idea of our scheme is that malwares tend to communicate with untrusted destination servers in order to transfer encrypted malicious payloads such as sensitive information and malicious codes.
+Untrusted servers can be identified on the basis of the level of SSL server certificate.
+In order to encrypt traffic data, attackers have to introduce SSL server certificates to their servers.
+Attackers tend to use an untrusted certificate to encrypt malicious payloads in many cases since passing rigorous examination process is required to obtain a trusted certificate.
+Thus, \our scheme can detect malwares by using SSL server certificate based features since their servers tend to be untrusted.
+However, since benign apps also communicate with untrusted servers, the detection performance may be degraded.
+In order to eliminate such situation, \we introduce required permission base weight values to SSL server certificate based features because malwares inevitably have to require the permissions regarding malicious actions.
+By doing this, \our scheme can obtain the more exact features of malwares. 
+The contributions of this paper are as follows: 
+
+The rest of this paper is constructed as follows. 
+After this introduction, related works are introduced in Section \ref{sec:related_work}.
+The previous scheme and the shortcoming of that scheme are explained in Section \ref{sec:previous_scheme}.
+Proposed scheme is described in Section \ref{sec:proposed_scheme}.
+Various evaluation results are their interpretation are shown in Section \ref{sec:evaluation}.
+Finally, the conclusions of this paper are presented in Section \ref{sec:conclusion}.
+
+% \begin{enumerate}
+  % \item Thtough an inspection regarding communication with destination servers of apps, \we discovered that there exists the difference of the level of SSL server certificates introduced to destination servers between benign apps and malwares.
+  % \item In order to cope with recent trend of malwares which transfer encrypted data, \we propose a detection scheme using features based on destination servers and the level of SSL server certificate.
+    % \Our scheme can detect malwares by utilizing the useful features that are applicable to encrypted traffic data and are hard to be disguised.
+  % \item  \Our evaluation results show that \our scheme can improve detection performance in comparison to the previous scheme. 
+    % Furthermore, we clearly demonstrate that \our scheme can deal with the malwares transferring encrypted malicious payloads and the shortcoming of the previous scheme.
+% \end{enumerate} 

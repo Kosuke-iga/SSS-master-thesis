@@ -1,0 +1,11 @@
+\section*{Abstract}\markright{Abstract} 
+Detecting Android malwares which send encrypted malicious payloads is imperative.
+As an Android malware detection scheme, \we focus on the scheme leveraging the fact that there exists the difference of network traffic patterns between benign apps and malwares because useful network traffic pattern based features can be obtained without packet inspection.
+However, such features are easy to be disguised by attackers. 
+Thus, the malwares whose traffic patterns are similar to benign ones can evade that scheme.  
+In this paper, \we propose a detection scheme using features based on destination servers and the level of SSL server certificate. 
+Attackers tend to use an untrusted certificate to encrypt malicious payloads in many cases because passing rigorous examination is required to get a trusted certificate. 
+Thus, \we utilize SSL server certificate based features for detection since their servers tend to be untrusted. 
+Furthermore, in order to obtain the more exact malicious features which are hard to be disguised, \we introduce required permission based weight values because malwares inevitably require permissions regarding malicious actions. 
+By computer simulation with real dataset, \we show \our scheme can improve detection performance. 
+Furthermore, \we clearly demonstrate that \our scheme can deal with the malwares transferring encrypted malicious payloads and the shortcoming of the previous scheme.

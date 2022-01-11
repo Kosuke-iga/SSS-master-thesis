@@ -1,0 +1,27 @@
+\documentclass{standalone} 
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes, automata, arrows}
+\usetikzlibrary{shapes.geometric}
+\usepackage{pgfplots}
+\usepackage{latexsym}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+% \pgfplotsset{compat=latest}
+\usepackage{amsmath}
+\usepackage[varg]{txfonts}
+\usepackage{pgfplotstable}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+    enlargelimits=false,
+]
+\addplot+[
+    only marks,
+    scatter,
+    mark=halfcircle*,
+    mark size=2.9pt]
+table[meta=ma]
+{example.dat};
+\end{axis}
+\end{tikzpicture}
+\end{document}
