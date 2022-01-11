@@ -1,72 +1,28 @@
 \chapter{Related Work}\markright{Chapter 2: Related Work}\label{sec:related_work} 
-In order to detect Android malwares, several schemes have been proposed . 
-These schemes are divided into required resource based detection and network based detection.
-% These schemes are divided into host based detection and network traffic based detection.
-Required resource based detection is conducted by utilizing the features extracted from required resource such as permissions and application programming interface (API) calls.
-Meanwhile, network based detection is performed on the basis of the features regarding network behavior of Android apps.
+In order to detect IoT malwares, several schemes have been proposed. 
+These schemes are divided into router-side detection and device-side detection.
+Router-side detection is performed at a gateway on the basis of the features regarding propagation behavior for building a botnet.
+Meanwhile, device-side detection is conducted at each IoT device by utilizing static features extracted from malware itself.
 The representative schemes are explained in the following subsections.
 
-\section{Required resource based detection}
-Encl et al. \cite{enck2009lightweight} propose the scheme leveraging the combination of permissions required by an Android app. 
-That scheme pays attention to the fact that malwares tend to require the permissions regarding sensitive actions such as accessing device information and personal information of users.
-Therefore, Android malwares can be detected by matching required permission.
-% However, that scheme is not applicable to repackaged applications which are created by injecting malicious components into an original app.
-% Since the permissions requested by repackaged malwares are similar to original apps, repackaged apps can evade that scheme.
-However, since benign apps may also require sensitive permissions, a large number of benign ones may be regarded as malwares by that scheme.
-This is why it is necessary to design the schemes which rely on other features.
+\section{Router-side detection}
+Router-side detctions leverage the fact that there exists strong evidence of malwares in network traffic.
+Kumar et al. \cite{router} propose the scheme focusing on network traffic while the scanning and propagation phase in particular which is observed in most of the existing malware behaviour for the purpose of building a botnet. 
+That scheme detect abnormal traffic caused while this phase which cannot be seen in benign cases utilizing machine learning.
+It utilizes the number of unique destination IP addresses and packets per destination IP addresses as features observing incoming packets which have spcific target destination port number that the existing malwares tend to send.
+The number of unique destination IP addresses in case of malware-induced scanning traffic will be far more than benign traffic since the malware generate random IP addresses and send malicious requests to them.
+Also, the number of packets per destination IP addresses seeks to exploit the fact that malware typically do not send mulitiple malicious packets to the same IP addresses (only a single packet is sent in most cases), possibly to cover as many devices as possible during the scanning/propagation phase.
 
-Deshotels et al. \cite{deshotels2014droidlegacy} propose the scheme relying on API calls in detecting Android malwares. 
-That scheme focuses on the fact that malwares abuse sensitive API call to conduct malicious operations.
-Malwares are classified in accordance with matching Android API calls against the signatures that identify malwares.  
-% However, since that scheme is designed to detect malwares exploiting sensitive API calls, malwares which use none of sensitive API calls can bypass that scheme by conspiring with another app to conduct malicious operations. 
-However, that scheme cannot detect the malwares which conspire with another app by dynamic code loading such as installing another malicious app since none of sensitive API calls are used by the malwares. 
+By being based on the scanning/propagation phase, it can detect and isolate the bots before they can participate in an actual attack such as DDoS.
 
-In order to deal with the malwares colluding with another app, Xu et al. \cite{xu2016iccdetector} propose the scheme that builds malware detection models based on Inter-Component Communication (ICC).
-The main idea of that scheme is that there exists the difference of ICC patterns between benign apps and malwares.
-While ICC is mainly utilized for internal communication in a benign app, malwares tend to communicate with other apps via ICC to conduct malicious operations.
-Thus, that scheme can detect the malwares which invalidate most existing required resources based detection schemes by leveraging the ICC based features.  
-However, that scheme cannot detect the malwares which conduct simple actions such as sending sensitive information via network due to the absence of ICC related features.
+However, that scheme is subject to local network attacks where IoT devices are targeted directly by adversaries in the same local network.
+Thus, exploring the malware detection schemes which can be realized by each IoT device is needed due to the vulnerability against local network attacks.
 
-% However, the malwares can hide potential ability to conduct malicious actions by utilizing code obfuscation techniques \cite{moser2007limits}.
-% Thus, since that scheme rely on the features extracted by static analysis, that scheme can be easily bypassed by such malwares due to invisible maliciousness.
+\section{Device-side detection} 
+Device-side detection schemes are conducted by utilizing the features extracted malware file itself at each device on the basis of malwares are tend to have similality among them since adversaries make them based on the existing malwares.
+Most of them utilize various features which can be extracted statically since IoT devices are not suitable for dynamic approach due to their limited computing and storage capabilities.
 
-% In order to supplement the limitation of static analysis, Sun et al. \cite{sun2017monet} propose the scheme that leverages dynamic runtime information.
-% That scheme focuses on the fact that the binder call graph of malwares is similar to that of existing malwares variants.
-% Binder is a kernel driver for inter-process communication between apps.
-% Because all the communication in Android apps need to go through the binder, binder call graph can accurately represent malicious behavior of malwares.
-% % That scheme focuses on the fact that malwares are created by modifying existing malwares, and runtime behavior of malwaresis accurately represented 
-% Hence, that scheme can detect malwares by utilizing dynamic binder call graph for signatures matching algorithm.  
-% However, although dynamic analysis schemes are promising \cite{egele2012survey} due to using the features extracted at runtime, they need to modify the device OS and install new apps in order to track and access sensitive information and system calls at runtime.
-% This is why performing dynamic analysis schemes on resource-constrained smart device is challenging.
-% Hence, exploring new malwares detection schemes which rely on something except required resource is needed.
+Alasmary et al. \cite{cfg} propose the scheme which utilizes the features acquired from a Control Flow Graph (CFG), which could be used to extract representative static features of the application.
 
-
-Sun et al. \cite{sun2017monet} propose the scheme that leverages dynamic binder call graph.
-Binder is a kernel driver for inter-process communication between apps.
-That scheme focuses on the fact that the binder call graph of malwares is similar to that of existing malwares variants since most malwares are created by adding new malicious logic into existing malwares.
-Because all the communication in Android apps need to go through the binder, binder call graph can accurately represent malicious behavior of malwares.
-% That scheme focuses on the fact that malwares are created by modifying existing malwares, and runtime behavior of malwaresis accurately represented 
-Hence, that scheme can detect malwares which conspire with another app and conduct simple actions by utilizing dynamic binder call graph for signatures matching algorithm.  
-However, malwares can invalidate that scheme by transformation attack such as inserting dummy actions into malicious actions in order not to be similar to malicious signatures \cite{faruki2015android}.
-
-% Although above-mentioned required resource based schemes can detect a part of malwares, they can be subject to the malwares created by clever attackers.
-Although above-mentioned required resource based schemes can detect a part of malwares, they are subject to the clever techniques such as dynamic code loading \cite{arora2018ntpdroid} and transformation attack \cite{zheng2012adam} \cite{rastogi2013droidchameleon}.
-Thus, exploring new malware detection schemes which rely on something except required resource is needed due to the limitations of required resource based detection schemes.
-
-\section{Network based detection} 
-Network based detection schemes leverages the fact that there exists strong evidence of malwares in network traffic data since most malwares communicate with external network to conduct malicious actions.
-
-Wang et al. \cite{wang2018detecting} propose the scheme which utilizes the text semantic features of network traffic to develop an effective malware detection model.
-That scheme pays attention to the occurrence of words regarding sensitive information in HTTP header of malwares.
-Since malwares tend to use HTTP-POST/GET methods in order to send sensitive information such as ``latitude'', ``longitude'' and ``imei'' which is the unique identifier of the phone, semantic text features can be extracted from traffic flows of malwares. 
-Therefore, that scheme can detect malwares which send sensitive information to external servers with high accuracy.
-However, the malwares that utilize HTTPS protocol to encrypt malicious payloads cannot be efficiently detected by that scheme.
-
-In order to deal with encrypted traffic data, Garg et al. \cite{garg2017network} propose the scheme focusing on the network traffic patterns of Android apps.
-That scheme leverages the fact that there exists the difference of network traffic patterns between benign apps and malwares.
-Network traffic pattern based features such as packets and data bytes transferred between origin and the destination are extracted from traffic data of running apps.
-That scheme can efficiently deal with the malwares which send encrypted data because useful traffic patterns based features are extracted without deep packet inspection.  
-Although two above network based detection schemes are proposed, we pay attention to that scheme \cite{garg2017network} because more and more malwares tend to interact with external networks by using encrypted traffic \cite{wang2018detecting} \cite{garg2017network}.
-\We explain that scheme as the previous scheme in the next section. 
 \newpage
 
