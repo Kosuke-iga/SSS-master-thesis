@@ -10,37 +10,25 @@ Thus, this circumstance results in the urgency of detecting IoT malwares.
 %Existing practical solutions for detecting malwares are all static approaches since they are not suitable for dynamic approach due to limited computational resources of them.
 Existing solutions for detecting malwares are mainly classified into router-side schemes \cite{} and device-side schemes \cite{}.
 
-Router-side schemes pay attention to the fact that there exists strong evidences of malwares in network traffic by utilizing the features extracted from incoming packets of an scanning/infectiong phase such as destination IP address during a certain time, port number and so on, at a gateway of the network.
-These schemes focus on the fact that adversaries have to scan and infect IoT devices before attacking itself and theses phases cause some features in the incoming packets.
+Router-side schemes pay attention to the fact that there exists strong evidences of malwares in network traffic.
+This is because adversaries have to scan IoT devices and propagate their malware before attacking itself and theses phases cause abnormal traffic which cannot be seen in benign case.
+Based on the fact, those scheme utilize the features extracted from incoming packets in the scanning/propagation phase such as destination IP address during a certain time, port number and so on, at a gateway of the network.
 Although router-side schemes are useful, these schemes are subject to internal attacks of the local network itself since the packets do not go through the router.
 
 In order to cope with the limitations of router-side schemes, device-side schemes are proposed.
 Device-side schemes are conducted by utilizing the features extracted from malware itself at each IoT devices.
-Most of the device-side schemes utilze various features which can be extract statically since IoT devices are not suitable for dynamic approach due to thier limited computing and storage capabilities.
-\cite{} utilezes the features regarding to control flow graphs acquired by manipulated analysis and definitions of the features.
+Most of the device-side schemes utilze various features which can be extract statically since IoT devices are not suitable for dynamic detections due to their limited computing and storage capabilities.
+\cite{} utilezes the features regarding to Control Flow Graphs (CFGs) acquired by complicated analysis and definitions of the features.
 Although \cite{} can extract represantative features of the application, it is a time-consuming and laborious method due to the analysis for an enormous number of IoT malwares.
 
 In order to cope with the spreading IoT malwares with device-side detections, some researchers utilize Convolutional Neural Network (CNN) in their scheme.
 \cite{} utilezes GrayScale Image (GSI) converted from raw bytes of each malware binary for its CNN.
-Although it is suitable for IoT malware detection since CNN can extract malware features from GSI automatically without feature engineering, it can be avoided with evasive techniques by adversaries to binary files or GSIs of malware. 
-%More and more malwares tend to interact with external networks by using encrypted traffic in order to hide malicious payloads.
-%Thus, it is necessary to iextract useful features from malwares without deep packet inspection.
-%That scheme leverages the fact that there exists the difference of network traffic patterns between benign apps and malwares.
-%Network traffic pattern based features extracted from traffic data of running apps are fed into machine learning classifier, and it detects malwares.
-%Although that shcme is a promising approach due to applicability to encrypted traffic data, traffic pattern based features are easy to be disguised by attackers.
-%Hence, the malwares whose traffic patterns are similar to that of benign apps can evade that scheme.
+Although it is suitable for IoT malware detection since CNN can extract malware features from GSI automatically without feature engineering, it can be avoided with evasive techniques by adversaries to GSI or Binary Data (BD) of malware. 
 
-In order to detect such malwares with exisiting two evasive techniques, the one is to binary files and the other is to GSIs, in this paper, we propose an evasion-resilient IoT malware detection scheme with invalidating adversarial byte sequences and 1D convolutional filters.
-The main idea of our scheme is that evasive techniques by adverasaries 限られている 
+In order to detect such malwares with exisiting evasive techniques, that is manipulated GSIs and BD, in this paper, we propose an evasion-resilient IoT malware detection scheme with invalidating adversarial byte sequences and 1D convolutional filters.
+The main idea of our scheme is that the some regions which contribute to decision making in each manipulated target still remain after the evasive techniques by adverasaries. 
+We aim to improve the detection accuracy by statically by statically extracting/enhancing each beneficial region of the manipulated target for the CNN model.
 
-The main idea of our scheme is that malwares tend to communicate with untrusted destination servers in order to transfer encrypted malicious payloads such as sensitive information and malicious codes.
-Untrusted servers can be identified on the basis of the level of SSL server certificate.
-In order to encrypt traffic data, attackers have to introduce SSL server certificates to their servers.
-Attackers tend to use an untrusted certificate to encrypt malicious payloads in many cases since passing rigorous examination process is required to obtain a trusted certificate.
-Thus, \our scheme can detect malwares by using SSL server certificate based features since their servers tend to be untrusted.
-However, since benign apps also communicate with untrusted servers, the detection performance may be degraded.
-In order to eliminate such situation, \we introduce required permission base weight values to SSL server certificate based features because malwares inevitably have to require the permissions regarding malicious actions.
-By doing this, \our scheme can obtain the more exact features of malwares. 
 The contributions of this paper are as follows: 
 
 The rest of this paper is constructed as follows. 
