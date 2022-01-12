@@ -1,9 +1,22 @@
 \chapter{Proposed Scheme}\markright{Chapter 4: Proposed Scheme}\label{sec:proposed_scheme}
 
 \section{idea}
-\Our goal is to design the scheme utilizing the features that are applicable to encrypted traffic data and are hard to be disguised.
-In order to accomplish \our goal, \we propose a detection scheme using features based on destination servers and the level of SSL server certificate.  
-The main idea of \our scheme is that malwares tend to communicate with untrusted destination servers in order to transfer encrypted malicious payloads such as sensitive information and malicious codes.  
+Our goal is to design the defense scheme against each evasive technique on different targets, GSI and BD, to achive the practical CNN based IoT malware detection on IoT devices.
+In order to accomplish our goal, we propose an evasion-resilient IoT malware detection scheme with invalidating adversarial byte sequences and 1D convolutional filters.  
+The main idea of our scheme is that there still remain regions which contribute to decision making in both manipulated targets after the attacks.
+We aim to improve the detection accuracy by statically extracting/enhancing each beneficial region of the target to the CNN model.
+
+図 shows the manipulated area by adversaries and the area which have high degree of contribution for CNN to make decision on representative manipulated target.
+The red area in each target is the area which has been manipulated.
+In the case of AM, noise is added to the pixels, and in that of OM, the original BD is compressed or new code is inserted in these regions.
+On the other hand, the yellow area is where contributes to decision making still remaining after the attack.
+In the case of AM, it is the pixel region where noise cannot be added, and in that of OM, it is the byte sequence region which remain discretely after the compression.
+
+In each defense scheme, the detection accuracy can be improved by feeding those yellow region effectively to the CNN model.
+The representative schemes are explained in the following sections.
+
+
+
 % The useful features which are applicable to encrypted data can be obtained by focusing on the untrusted destination servers since they are extracted without deep packet inspection.
 Untrusted destination servers can be judged by identifying the level of SSL server certificates.  
 % \We can obtain SSL server certificates of servers by using the Openssl command. 
