@@ -19,10 +19,12 @@ However, that scheme is subject to local network attacks where IoT devices are t
 Thus, exploring the malware detection schemes which can be realized by each IoT device is needed due to the vulnerability against local network attacks.
 
 \section{Device-side detection} 
-Device-side detection schemes are conducted by utilizing the features extracted malware file itself at each device on the basis of malwares are tend to have similality among them since adversaries make them based on the existing malwares.
+Device-side detection schemes are conducted by utilizing the features extracted from malware file itself at each device on the basis of malwares are tend to have similality among them since adversaries make them based on the existing ones.
 Most of them utilize various features which can be extracted statically since IoT devices are not suitable for dynamic approach due to their limited computing and storage capabilities.
 
 Alasmary et al. \cite{cfg} propose the scheme which utilizes the features acquired from a Control Flow Graph (CFG), which could be used to extract representative static features of the application.
+The theoretic metrics of CFGs, such as the number of edges, density of a graph, shortest paths between each node and so on, can be multiple features of the model effctively derived from malware constructions under the limitation of static approach.
+However, that scheme is a time-consuming and laborious method due to the feature engineering for exploring effective metrics with analysing an enormous number of IoT malwares.
 
 \newpage
 

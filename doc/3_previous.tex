@@ -1,18 +1,17 @@
 \chapter{Previous Scheme}\markright{Previous Scheme}\label{sec:previous_scheme}
 \section{Overview of the previous scheme} 
-In order to deal with encrypted data, the traffic pattern based features are extracted without deep packet inspection in the previous scheme \cite{garg2017network}.
-The main idea of the previous scheme is that there exists the difference of network traffic patterns between benign apps and malwares.
-% Malwares need to transmit sensitive information to attackers most of the time the servers of attackers are offline or shutdown to escape detection.
-Malwares more frequently use HTTP-POST/GET methods for transmission of sensitive data at short intervals than benign apps.
-Furthermore, Malwares tend to repeatedly try to conduct malicious actions such as sending sensitive information and loading malicious codes because most of the time the servers of attackers are offline or shut down to escape detection.
-% Thus, creating malwares to make sure that attackers receive sensitive data results in the unique traffic patterns of malwares.
-Thus, creating malwares to ensure that malicious actions succeed results in the unique traffic patterns of malwares.
-% Thus, the unique traffic patterns of malwares results from creating malwares to make sure that attackers receive sensitive data .
-That scheme can detect malwares which communicate with other networks to conduct malicious actions by using the unique traffic patterns of malwares.
-The traffic patterns based features regarding four categories, namely DNS, HTTP, TCP and origin-destination based ones are extracted from traffic data of an app running on a real device.
-Finally, these features are fed into machine learning classifier such as Decision Tree and Random Forest for detection.
-% The previous scheme can deal with the malwares which send encrypted data because the traffic based features are extracted without deep packets inspection.
+In order to deal with spreading IoT malwares with device-side detections in more practical means, CNN is utilized in the previous scheme \cite{previous}.
+The main idea of the previous scheme is that there exists the difference of GSIs converted from each malware Binary Data (BD) which is always acquired in IoT devices due to the exectable format of them.
+In that scheme \cite{previous}, a malware binary is reformatted as an 8-bit sequence and then be converted to a GSI which has one channel and pixel values from 0 to 255.
+Some examples of malware and benign software GSIs are shown by ず挿入.
+By comparison, some novel differences between them can be observed even by human eyes.
+For example, it can be seen that malware GSIs always are more dense.
+On the other hand, the GSI of benign softwares tend to have larger header parts than malwares.
 
+These GSIs can represents each features and be fed into CNN.
+Since, CNN can extract effective features from these GSI automatically by learning deep non-linear features even that can be hardly descovered and understood by human eyes.
+Furthermore, once trained, the network itself is lightweight and can be run with tiny computational resources, since only the trained parameters and information of network structure are kept.
+Thus, CNN is a suitable scheme for IoT malware detections since it does not demand feature engineering and also computational costs while the detection.
 
 \section{Shortcoming of the previous scheme } 
 Although the features of the previous scheme can cope with encrypted traffic data, traffic pattern based features are subject to usage situations of apps.
