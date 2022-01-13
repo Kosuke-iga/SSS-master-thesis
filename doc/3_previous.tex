@@ -23,7 +23,8 @@ The representative vulnerabilities against each attack are explained in the foll
 The GSIs fed into the network as inputs in the previous scheme have pixels that match the Binary Data (BD), which is inserted into the source code by the compiler and has nothing to do with runtime behaviour.
 Adversaries can make the CNN model cause false judge as benign by intentionally applying some noises to these pixel values \cite{AM}.
 The two GSIs shown in 図 are the actual GSIs of a malware before and after adding noise.
-The GSI of AM is added noise by manipulating the pixel values of pixel that match metadata or debugging information which is irrelevant to the runtime behaviour and judged as benign in the previous scheme.
+The noise is added to the GSI of AM by manipulating the pixel values of pixel that match metadata or debugging information which is irrelevant to the runtime behaviour.
+By adding the noise in this way, the AM can mislead CNN as benign in the previous scheme.
 The AM attack is a threat to CNN detection since it allows the classifier to intentionally judge the malware as benign while maintaining the original behaviour of malware.
 
 \subsection{The vulnerability against binary manipulation}
@@ -32,9 +33,24 @@ Due to the small computational resources, obfuscation techniques with packing to
 As shown in 図, the original BD is compressed and encrypted at the same time, and new headers and tool-dependent data which do not contribute to the decision for detection are inserted.
 In addition to the fact that malware obfuscated with the packing tools can be recovered and analyzed only at runtime, the encryption method differs depending on the packing tool.Thus, binary manipulation attack is a threat especially for IoT devices which are not suitable for dynamic analysis due to the limited computing resources since there is no way to statically analyze them in advance.
 
+\begin{table}[p]
+  \begin{center}
+    \caption{Detection accuracy of original/manipulated malwares}
+    \label{tab:prev} 
+    \begin{tabular}{|c|c|c|} \hline
+       & Manipulation Target & Accuracy (\%) \\ \hline \hline
+      Original Malware & no manipulation  & 99.8  \\ \hline
+      AM & GSI & 66.1  \\ \hline 
+      OM & BD & 86.2 \\ \hline
+    \end{tabular}
+  \end{center}
+\end{table} 
+\afterpage{\clearpage}
+\newpage
 
+\paragraph*{}
 While previous scheme based on CNN can achieve high accuracy in detection, it is vulnerable against the above two attacks which aim to evade detection resulting in lower detection accuracy.
-In fact, 表 shows the original accuracy and the degradation of them by each attack.
+In fact, \tablename~\ref{tab:prev} shows the original accuracy and the degradation of them by each attack.
 The accuracy, which achieves 99.8\%, drops to 66.1\% under the AM attack with GSI manipulation and 86.2\% under the OM attack with BD manipulation.
 The results indicate that the previous scheme is vulnerable to these attacks.
 
