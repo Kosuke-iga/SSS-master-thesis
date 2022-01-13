@@ -1,10 +1,10 @@
 \chapter{Proposed Scheme}\markright{Chapter 4: Proposed Scheme}\label{sec:proposed_scheme}
 
-\section{idea}
+\section{Idea}
 Our goal is to design the defense scheme against each evasive technique on different targets, GSI and BD, to achive the practical CNN based IoT malware detection on IoT devices.
 In order to accomplish our goal, we propose an evasion-resilient IoT malware detection scheme with invalidating adversarial byte sequences and 1D convolutional filters.  
 The main idea of our scheme is that there still remain regions which contribute to decision making in both manipulated targets after the attacks.
-We aim to improve the detection accuracy by statically extracting/enhancing each beneficial region of the target to the CNN model.
+We aim to improve the detection accuracy by statically extracting/enhancing each valuable region of the target to the CNN model.
 
 図 shows the manipulated area by adversaries and the area which have high degree of contribution for CNN to make decision on representative manipulated target.
 The red area in each target is the area which has been manipulated.
@@ -14,6 +14,23 @@ In the case of AM, it is the pixel region where noise cannot be added, and in th
 
 In each defense scheme, the detection accuracy can be improved by feeding those yellow region effectively to the CNN model.
 The representative schemes are explained in the following sections.
+
+\section{Defense scheme against AM}
+A defense scheme against AM, which is a malware whose GSI is manipulated, is explained in this section.
+
+We focus on the fact that the adversary can manipulate only the pixels which match the BD whose information is unnecessary at runtime.
+This is because the AM must maintain the original functionality of the malware even after the noise is added by the adversary.
+In our proposal, we call these pixels Junk Pixels (JPs), and we think it would be possible to remove the noise by converting their pixel values into 0, which means turning them black pixels.
+
+The two GSIs as shown in 図 are the AM GSI with noise added by adversary and the that with denoising for JPs in our proposal.
+The red box area is the area where the pixel values are converted into 0 as JPs.
+This pixel region corresponds to the byte sequences which contain unnecessary information at runtime, such as metadata and debugging information used while linking.
+Thus, they can be regarded as pixels where the noise which contribute to benign decision can be added when AMs are created.
+
+On the other hand, yellow box area is the area with no manipulation in our proposal.
+This pixel area corresponds to the byte sequences that represents the malware behaviour and the data held.
+Thus, it is judged to hold valuable information for the classification since it is difficult to manipulate these byte sequences affecting the malware function for adversary without any destructions.
+Hence we utilize JPs, which locate in this area, for our detection as it is.
 
 
 
