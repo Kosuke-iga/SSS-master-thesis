@@ -1,11 +1,13 @@
-\section*{Abstract}\markright{Abstract} 
-Detecting Android malwares which send encrypted malicious payloads is imperative.
-As an Android malware detection scheme, \we focus on the scheme leveraging the fact that there exists the difference of network traffic patterns between benign apps and malwares because useful network traffic pattern based features can be obtained without packet inspection.
-However, such features are easy to be disguised by attackers. 
-Thus, the malwares whose traffic patterns are similar to benign ones can evade that scheme.  
-In this paper, \we propose a detection scheme using features based on destination servers and the level of SSL server certificate. 
-Attackers tend to use an untrusted certificate to encrypt malicious payloads in many cases because passing rigorous examination is required to get a trusted certificate. 
-Thus, \we utilize SSL server certificate based features for detection since their servers tend to be untrusted. 
-Furthermore, in order to obtain the more exact malicious features which are hard to be disguised, \we introduce required permission based weight values because malwares inevitably require permissions regarding malicious actions. 
-By computer simulation with real dataset, \we show \our scheme can improve detection performance. 
-Furthermore, \we clearly demonstrate that \our scheme can deal with the malwares transferring encrypted malicious payloads and the shortcoming of the previous scheme.
+\section*{Abstract}\markright{Abstract}
+
+
+Detecting IoT malware robustly against evasive techniques is imperative.
+
+
+As an IoT malware detection scheme, \we focus on the scheme leveraging binary-derived grayscale images for convolutional newral network in IoT device detection because it can cope with the accelerating IoT malware surge due to the automatic and light-weight analysis which CNN can realize.
+However, that scheme can be evaded by the adversary with manipulated malware grayscale image or binary data.
+In this paper, \we propose an evasion-resilient IoT malware detection scheme with invalidating adversarial byte sequences and 1D convolutional filters.
+The valuable regions still remain which contribute to classification in both manipulated targets, grayscale image and binary data, after the attacks.
+Thus, I improve the detection accuracy by statically extracting/enhancing valuable region of each manipulated target to the CNN model.
+By evaluation with each manipulated dataset, \we show \our scheme can improve detection performance against both evasive techniques. 
+Exploring the valuable regions remaining in manipulated target and improvement of the detection accuracy utilizing the regions in my detection are the contributions of my research. 
