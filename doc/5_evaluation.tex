@@ -49,14 +49,20 @@ Two datasets of the three are composed of malwares obfuscated by each packing to
 In the evaluation in respective evaluation, some of the samples from total manipulated malwares, 800 samples in AM attack scenario and 1000 samples in OM attack scenario, are picked randomly, then utilized as inputs in order to keep balance between the number of malwares and that of benign ones.
 
 \section{Evaluation of the invalidating adversarial byte sequences against AM attack}
-
+The effectiveness of the proposed method against AM which invalidates adversarial byte sequences with noise removal in the non-valuable pixels is shown in this subsection.
+We compare the accuracy of our proposed scheme with that of the previous scheme as shown in \figurename~\ref{fig:evalAM}.
+The left graph represents the accuracy of the previous scheme in detecting original malwares, the middle one does that in detecting AM, and the right one does the accuracy of the proposal, where non-valuable pixel values in benign and AM samples are converted to zero.
+As shown in \figurename~\ref{fig:evalAM}, the proposed scheme achieves improving the accuracy degraded by AM from 66.1\% to 99.4\%.
+Although a slight decrease in detection accuracy is observed compared to the previous scheme and the proposal, the proposal is able to maintain high accuracy.
+Thus, the loss of valuable information for classification by removing noise can be considered to be small.
+Hence, we conclude that the proposed method against AM, where the non-valuable pixels at runtime are focused on, achieves a robust defense method which can invalidate adversarial techniques in AM.
 
 \section{Evaluation of the method with 1D convolutional filters against OM attack}
 \begin{table}[p]
   \begin{center}
     \vspace{-8pt} 
     \caption{The datasets used for the OM-resiliency evaluation}
-    \label{tab:schemes} 
+    \label{tab:evalOM} 
     % \vspace{-8pt} 
     % \hspace{-10pt} 
     \begin{tabular}{|c|c|c|} \hline
@@ -69,7 +75,20 @@ In the evaluation in respective evaluation, some of the samples from total manip
   \end{center}
 \end{table}
 
+The effectiveness of the proposed method with 1D convolutional filters against OM is shown in this subsection.
+We compare the accuracy of our proposed scheme using 1D Conv. with that of the previous scheme using 2D Conv. in each dataset as shown in \tablename~\ref{tab:evalOM}.
+Compared to 2D Conv. in the previous scheme, the detection accuracy is improved by 1D Conv. in the proposal for all cases.
+In the datasets where the both-tools-made OM are mixed in particular, the accuracy improves from 86.2\% to 90.0\%.
+According to the result above, we conclude that the proposed method with 1D Conv. against OM achieves a robust defense method with less tool-dependency against OM.
 
+\paragraph{}
+In order to observe the relation between the detection accuracy and the filter size of 1D Conv., we evaluate the accuracy varing the filter width.
+The 1D Conv. size is changes based on the area of the 2D Conv., which is defined as $S$ in the evaluation, in the previous scheme.
+The result is shown in \figurename~\ref{fig:evlOM}, where the red line indicates the accuracy of the proposed scheme and the blue one does that of the previous scheme.
+In the range of $1/4S$ to $1.5S$, the accuracy increases as the filter size also increases, and reaches 90.0\% at $1.5S$.
+The result suggests that a certain width is necessary to emphasize the appearing order to the CNN model, since the remaining original byte sequences is highly disjoint due to resizing during GSI conversion and compression by obfuscation procedures.
+Meanwhile, the accuracy decreases from $1.5S$ to $2.0S$.
+We consider that this is caused by the decrease in learning efficiency due to the increase in parameters caused by the expansion of the filter size.
 
 \begin{table}[p]
   \begin{center}
@@ -77,22 +96,18 @@ In the evaluation in respective evaluation, some of the samples from total manip
     \label{tab:result} 
     \begin{tabular}{|c|c|c|c|} \hline
       Scheme & Accuracy(\%) & TPR (\%)& FPR (\%) \\ \hline \hline
-      % Prop.1 & 89.0 & 84.7 & 7.83  \\ \hline
       \Our scheme & 89.0 & 84.7 & 7.83  \\ \hline
       Previous Scheme & 86.6 & 80.2 & 8.58  \\ \hline 
       SSL certificate based scheme  & 86.6 & 83.2 & 10.1 \\ \hline
       Permission based features & 86.6 & 76.2 & 5.69  \\ \hline
       \Our scheme  & \multirow{2}{*}{89.9} & \multirow{2}{*}{86.3} & \multirow{2}{*}{7.40} \\ 
        \& previous scheme  &  &  &  \\ \hline 
-      % SSL certificate based scheme & \multirow{2}{*}{89.5} & \multirow{2}{*}{82.9} & \multirow{2}{*}{7.40} \\ 
-       % \& previous scheme  &  &  &  \\ \hline
     \end{tabular}
   \end{center}
 \end{table} 
 \afterpage{\clearpage}
 \newpage
 
-\figurename~\ref{fig:important_prev_feature} shows the average values of the top 5 important previous features of the malwares detected only by \our scheme.
 \begin{figure}[p]
 	% \centering
 	% \includegraphics[scale=0.35]{./figure/important_prev_f.pdf}
@@ -100,10 +115,6 @@ In the evaluation in respective evaluation, some of the samples from total manip
   \caption{Average values of top 5 important previous features} 
   \label{fig:important_prev_feature}
 \end{figure}
-
-As shown in \figurename~\ref{fig:important_prev_feature}, these features of the malwares detected by \our scheme are similar to the benign ones.
-\afterpage{\clearpage}
-\newpage
 
 
 \afterpage{\clearpage}
