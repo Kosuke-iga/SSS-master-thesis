@@ -57,6 +57,15 @@ Although a slight decrease in detection accuracy is observed compared to the pre
 Thus, the loss of valuable information for classification by removing noise can be considered to be small.
 Hence, we conclude that the proposed method against AM, where the non-valuable pixels at runtime are focused on, achieves a robust defense method which can invalidate adversarial techniques in AM.
 
+\begin{figure}[p]
+ \centering
+ \hspace{-100pt}
+ \includegraphics[scale=0.5, bb=10 50 300 100]{./figures/evalAM.pdf}
+ \caption{The accuracy of the proposal aginst AM} 
+ \label{fig:evalAM}
+\end{figure}
+\afterpage{\clearpage}
+\newpage
 \section{Evaluation of the method with 1D convolutional filters against OM attack}
 \begin{table}[p]
   \begin{center}
@@ -90,33 +99,13 @@ The result suggests that a certain width is necessary to emphasize the appearing
 Meanwhile, the accuracy decreases from $1.5S$ to $2.0S$.
 We consider that this is caused by the decrease in learning efficiency due to the increase in parameters caused by the expansion of the filter size.
 
-\begin{table}[p]
-  \begin{center}
-    \caption{\Our evaluation result}
-    \label{tab:result} 
-    \begin{tabular}{|c|c|c|c|} \hline
-      Scheme & Accuracy(\%) & TPR (\%)& FPR (\%) \\ \hline \hline
-      \Our scheme & 89.0 & 84.7 & 7.83  \\ \hline
-      Previous Scheme & 86.6 & 80.2 & 8.58  \\ \hline 
-      SSL certificate based scheme  & 86.6 & 83.2 & 10.1 \\ \hline
-      Permission based features & 86.6 & 76.2 & 5.69  \\ \hline
-      \Our scheme  & \multirow{2}{*}{89.9} & \multirow{2}{*}{86.3} & \multirow{2}{*}{7.40} \\ 
-       \& previous scheme  &  &  &  \\ \hline 
-    \end{tabular}
-  \end{center}
-\end{table} 
-\afterpage{\clearpage}
-\newpage
-
 \begin{figure}[p]
-	% \centering
-	% \includegraphics[scale=0.35]{./figure/important_prev_f.pdf}
-	\includegraphics[scale=1.0, bb=10 10 250 250]{./figures/important_prev_f_tikz.pdf}
-  \caption{Average values of top 5 important previous features} 
-  \label{fig:important_prev_feature}
+ \centering
+ \hspace{-100pt}
+ \includegraphics[scale=0.5, bb=10 50 400 100]{./figures/evalOM.pdf}
+ \caption{The relation between the accuracy and 1D Conv. size of the proposal aginst OM} 
+ \label{fig:evalOM}
 \end{figure}
-
-
 \afterpage{\clearpage}
 \newpage
 
