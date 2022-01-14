@@ -30,6 +30,11 @@ The main idea of our scheme is that the some regions which contribute to decisio
 We aim to improve the detection accuracy by statically by statically extracting/enhancing each beneficial region of the manipulated target for the CNN model.
 
 The contributions of this paper are as follows: 
+\begin{itemize}
+ \item We find the the valuable regions which remain in adversarial malware and improve the detection accuracy of them by denoising procedure.
+ \item We find the the valuable features which obfuscated malware have and improve the detection accuracy of them by emphasizeing their valuable regions to CNN model.
+ \item To the best of my knowledge, there is currenlty no reference to research defense schemes against the evasive techniques by adversaries. However, it is considered in this paper, and, furthermore, give effective solutions.
+\end{itemize}
 
 The rest of this paper is constructed as follows. 
 After this introduction, related works are introduced in Section \ref{sec:related_work}.
@@ -38,10 +43,3 @@ Proposed scheme is described in Section \ref{sec:proposed_scheme}.
 Various evaluation results are their interpretation are shown in Section \ref{sec:evaluation}.
 Finally, the conclusions of this paper are presented in Section \ref{sec:conclusion}.
 
-% \begin{enumerate}
-  % \item Thtough an inspection regarding communication with destination servers of apps, \we discovered that there exists the difference of the level of SSL server certificates introduced to destination servers between benign apps and malwares.
-  % \item In order to cope with recent trend of malwares which transfer encrypted data, \we propose a detection scheme using features based on destination servers and the level of SSL server certificate.
-    % \Our scheme can detect malwares by utilizing the useful features that are applicable to encrypted traffic data and are hard to be disguised.
-  % \item  \Our evaluation results show that \our scheme can improve detection performance in comparison to the previous scheme. 
-    % Furthermore, we clearly demonstrate that \our scheme can deal with the malwares transferring encrypted malicious payloads and the shortcoming of the previous scheme.
-% \end{enumerate} 
