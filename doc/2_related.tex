@@ -7,7 +7,7 @@ The representative schemes are explained in the following subsections.
 
 \section{Router-side detection}
 Router-side detctions leverage the fact that there exists strong evidence of malwares in network traffic.
-Kumar et al. \cite{router} propose the scheme focusing on network traffic while the scanning and propagation phase in particular which is observed in most of the existing malware behaviour for the purpose of building a botnet. 
+Kumar et al. \cite{router} propose the scheme focusing on network traffic while the scanning and propagation phase in particular which is observed in most of the existing malware behaviour for the purpose of building a botnet as shown in \figurename~\ref{fig:lan}. 
 That scheme detect abnormal traffic caused while this phase which cannot be seen in benign cases utilizing machine learning.
 It utilizes the number of unique destination IP addresses and packets per destination IP addresses as features observing incoming packets which have spcific target destination port number that the existing malwares tend to send.
 The number of unique destination IP addresses in case of malware-induced scanning traffic will be far more than benign traffic since the malware generate random IP addresses and send malicious requests to them.
@@ -18,13 +18,32 @@ By being based on the scanning/propagation phase, it can detect and isolate the 
 However, that scheme is subject to local network attacks where IoT devices are targeted directly by adversaries in the same local network.
 Thus, exploring the malware detection schemes which can be realized by each IoT device is needed due to the vulnerability against local network attacks.
 
+\begin{figure}[p]
+ \centering
+ \hspace{-55pt}
+ \includegraphics[scale=0.5, bb=10 50 740 100]{./figures/lan.pdf}
+ \caption{The router-side detection in the scanning/propagation flow and its problem} 
+ \label{fig:lan}
+\end{figure}
+\afterpage{\clearpage}
+\newpage
+
 \section{Device-side detection} 
 Device-side detection schemes are conducted by utilizing the features extracted from malware file itself at each device on the basis of malwares are tend to have similality among them since adversaries make them based on the existing ones.
 Most of them utilize various features which can be extracted statically since IoT devices are not suitable for dynamic approach due to their limited computing and storage capabilities.
 
-Alasmary et al. \cite{cfg} propose the scheme which utilizes the features acquired from a Control Flow Graph (CFG), which could be used to extract representative static features of the application.
+Alasmary et al. \cite{cfg} propose the scheme which utilizes the features acquired from a Control Flow Graph (CFG), which could be used to extract representative static features of the application as shown in \figurename~\ref{fig:cfg}.
 The theoretic metrics of CFGs, such as the number of edges, density of a graph, shortest paths between each node and so on, can be multiple features of the model effctively derived from malware constructions under the limitation of static approach.
 However, that scheme is a time-consuming and laborious method due to the feature engineering for exploring effective metrics with analysing an enormous number of IoT malwares.
 
+\begin{figure}[p]
+ \centering
+ \hspace{-55pt}
+ \includegraphics[scale=0.5, bb=10 50 720 100]{./figures/cfg.pdf}
+ \caption{The overview of device-side detection using CFG} 
+ \label{fig:cfg}
+\end{figure}
+\afterpage{\clearpage}
+\newpage
 \newpage
 

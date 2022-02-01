@@ -2,13 +2,24 @@
 
 In these days, the Internet of Things (IoT) is interconnetcting a large number of electronic devices with a variety of applications in our lives, such as smart appliances, smart houses, smart grid, energy management systems, and so on, at a tremendous speed.
 The number of the IoT devices is continue to increase.
-It is estimated to be about 50 billion all over the world by 2030 \cite{}.
+It is estimated to be about 50 billion all over the world by 2030 \cite{bg1, bg2}.
 They become targets of malware attacks due to the rapid increase and the development into devices which have interconnectivity in these days.
 Unfortunately, vulnerable IoT devices are spreading since the countermeasures cannot keep up with this trend of IoT malware attacks.
+\figurename~\ref{fig:mirai} represents an actual case of attack damage by malware called Mirai.
+In fact, as shown in \figurename~\ref{fig:mirai}, attacks against companies using many IoT devices infected with malware have become a problem, and the detection of IoT malware has become an urgent issue.
 Thus, this circumstance results in the urgency of detecting IoT malwares.
 
+\begin{figure}[p]
+ \centering
+ \hspace{-55pt}
+ \includegraphics[scale=0.5, bb=10 50 780 100]{./figures/mirai.pdf}
+ \caption{The case of attack damage by Mirai malware} 
+ \label{fig:mirai}
+\end{figure}
+\afterpage{\clearpage}
+\newpage
 %Existing practical solutions for detecting malwares are all static approaches since they are not suitable for dynamic approach due to limited computational resources of them.
-Existing solutions for detecting malwares are mainly classified into router-side schemes \cite{} and device-side schemes \cite{}.
+Existing solutions for detecting malwares are mainly classified into router-side schemes \cite{net} and device-side schemes \cite{cfg}.
 
 Router-side schemes pay attention to the fact that there exists strong evidences of malwares in network traffic.
 This is because adversaries have to scan IoT devices and propagate their malware before attacking itself and theses phases cause abnormal traffic which cannot be seen in benign case.
@@ -18,11 +29,11 @@ Although router-side schemes are useful, these schemes are subject to internal a
 In order to cope with the limitations of router-side schemes, device-side schemes are proposed.
 Device-side schemes are conducted by utilizing the features extracted from malware itself at each IoT devices.
 Most of the device-side schemes utilze various features which can be extract statically since IoT devices are not suitable for dynamic detections due to their limited computing and storage capabilities.
-\cite{} utilezes the features regarding to Control Flow Graphs (CFGs) acquired by complicated analysis and definitions of the features.
-Although \cite{} can extract represantative features of the application, it is a time-consuming and laborious method due to the analysis for an enormous number of IoT malwares.
+\cite{cfg} utilezes the features regarding to Control Flow Graphs (CFGs) acquired by complicated analysis and definitions of the features.
+Although \cite{cfg} can extract represantative features of the application, it is a time-consuming and laborious method due to the analysis for an enormous number of IoT malwares.
 
 In order to cope with the spreading IoT malwares with device-side detections, some researchers utilize Convolutional Neural Network (CNN) in their scheme.
-\cite{} utilezes GrayScale Image (GSI) converted from raw bytes of each malware binary for its CNN.
+\cite{previous} utilezes GrayScale Image (GSI) converted from raw bytes of each malware binary for its CNN.
 Although it is suitable for IoT malware detection since CNN can extract malware features from GSI automatically without feature engineering, it can be avoided with evasive techniques by adversaries to GSI or Binary Data (BD) of malware. 
 
 In order to detect such malwares with exisiting evasive techniques, that is manipulated GSIs and BD, in this paper, we propose an evasion-resilient IoT malware detection scheme with invalidating adversarial byte sequences and 1D convolutional filters.
