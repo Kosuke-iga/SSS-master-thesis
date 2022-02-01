@@ -10,20 +10,20 @@ where TP, TN, FP, and FN denote the number of True Positive (malwares are regard
 \tablename~\ref{tab:simulation_parameters} shows our simulation parameters.  
 \begin{table}[p]
 	\begin{center}
-		\caption{Simulation Parameters}
+		\caption{Simulation Parameters.}
 		\label{tab:simulation_parameters} 
 		\begin{tabular}{|c|c|} \hline
 			The name of parameters & Value\\ \hline \hline
 			Benign files & Ubuntu 16.04.3\cite{ubuntu}\\ \hline
 			\multirow{2}{*}{\hfill Malwares  \hfill} & IoTPOT\cite{iotpot} \\ 
 																							 & VirusTotal\cite{virustotal}\\ \hline
-			The number of benign files  & 1,442 \\  \hline
-			The number of malwares  &  7,263 \\ \hline
-			The AM attack method & White-box \cite{am, yamafumi} \\ \hline
-			\multirow{2}{*}{\hfill The packing tools for OM  \hfill} & UPX\cite{upx} \\ & kiteshield\cite{kiteshield} \\ \hline
-			The number of samples  & \multirow{2}{*}{\hfill 800 \hfill} \\  
+			Number of benign files  & 1,442 \\  \hline
+			Number of malwares  &  7,263 \\ \hline
+			AM attack method & White-box \cite{am, yamafumi} \\ \hline
+			\multirow{2}{*}{\hfill Packing tools for OM  \hfill} & UPX\cite{upx} \\ & kiteshield\cite{kiteshield} \\ \hline
+			Number of samples  & \multirow{2}{*}{\hfill 800 \hfill} \\  
 			in AM-resiliency evaluation & \\ \hline 
-			The number of samples  & \multirow{2}{*}{\hfill 1000 \hfill} \\  
+			Number of samples  & \multirow{2}{*}{\hfill 1000 \hfill} \\  
 			in OM-resiliency evaluation & \\ \hline 
 		\end{tabular}
 	\end{center}
@@ -57,20 +57,26 @@ Although a slight decrease in detection accuracy is observed compared to the pre
 Thus, the loss of valuable information for classification by removing noise can be considered to be small.
 Hence, we conclude that the proposed method against AM, where the non-valuable pixels at runtime are focused on, achieves a robust defense method which can invalidate adversarial techniques in AM.
 
-\begin{figure}[p]
+\begin{figure}[h]
  \centering
- \hspace{-100pt}
- \includegraphics[scale=0.5, bb=10 50 300 100]{./figures/evalAM.pdf}
- \caption{The accuracy of the proposal aginst AM} 
+ %\hspace{-100pt}
+ \includegraphics[scale=0.5]{./figures/evalAM.pdf}
+ \caption{The accuracy of the proposal aginst AM.} 
  \label{fig:evalAM}
 \end{figure}
-\afterpage{\clearpage}
+%\afterpage{\clearpage}
 \newpage
+
 \section{Evaluation of the method with 1D convolutional filters against OM attack}
-\begin{table}[p]
+The effectiveness of the proposed method with 1D convolutional filters against OM is shown in this subsection.
+We compare the accuracy of our proposed scheme using 1D Conv. with that of the previous scheme using 2D Conv. in each dataset as shown in \tablename~\ref{tab:evalOM}.
+Compared to 2D Conv. in the previous scheme, the detection accuracy is improved by 1D Conv. in the proposal for all cases.
+In the datasets where the both-tools-made OM are mixed in particular, the accuracy improves from 86.2\% to 90.0\%.
+According to the result above, we conclude that the proposed method with 1D Conv. against OM achieves a robust defense method with less tool-dependency against OM.
+\begin{table}[h]
   \begin{center}
-    \vspace{-8pt} 
-    \caption{The datasets used for the OM-resiliency evaluation}
+    %\vspace{-8pt} 
+    \caption{The datasets used for the OM-resiliency evaluation.}
     \label{tab:evalOM} 
     % \vspace{-8pt} 
     % \hspace{-10pt} 
@@ -84,26 +90,20 @@ Hence, we conclude that the proposed method against AM, where the non-valuable p
   \end{center}
 \end{table}
 
-The effectiveness of the proposed method with 1D convolutional filters against OM is shown in this subsection.
-We compare the accuracy of our proposed scheme using 1D Conv. with that of the previous scheme using 2D Conv. in each dataset as shown in \tablename~\ref{tab:evalOM}.
-Compared to 2D Conv. in the previous scheme, the detection accuracy is improved by 1D Conv. in the proposal for all cases.
-In the datasets where the both-tools-made OM are mixed in particular, the accuracy improves from 86.2\% to 90.0\%.
-According to the result above, we conclude that the proposed method with 1D Conv. against OM achieves a robust defense method with less tool-dependency against OM.
-
 \paragraph{}
 In order to observe the relation between the detection accuracy and the filter size of 1D Conv., we evaluate the accuracy varing the filter width.
 The 1D Conv. size is changes based on the area of the 2D Conv., which is defined as $S$ in the evaluation, in the previous scheme.
-The result is shown in \figurename~\ref{fig:evlOM}, where the red line indicates the accuracy of the proposed scheme and the blue one does that of the previous scheme.
+The result is shown in \figurename~\ref{fig:evalOM}, where the red line indicates the accuracy of the proposed scheme and the blue one does that of the previous scheme.
 In the range of $1/4S$ to $1.5S$, the accuracy increases as the filter size also increases, and reaches 90.0\% at $1.5S$.
 The result suggests that a certain width is necessary to emphasize the appearing order to the CNN model, since the remaining original byte sequences is highly disjoint due to resizing during GSI conversion and compression by obfuscation procedures.
 Meanwhile, the accuracy decreases from $1.5S$ to $2.0S$.
 We consider that this is caused by the decrease in learning efficiency due to the increase in parameters caused by the expansion of the filter size.
 
-\begin{figure}[p]
+\begin{figure}[h]
  \centering
- \hspace{-100pt}
- \includegraphics[scale=0.5, bb=10 50 400 100]{./figures/evalOM.pdf}
- \caption{The relation between the accuracy and 1D Conv. size of the proposal aginst OM} 
+ %\hspace{-100pt}
+ \includegraphics[scale=0.5]{./figures/evalOM.pdf}
+ \caption{The relation between the accuracy and 1D Conv. size of the proposal aginst OM.} 
  \label{fig:evalOM}
 \end{figure}
 \afterpage{\clearpage}

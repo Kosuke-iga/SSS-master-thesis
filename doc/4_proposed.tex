@@ -15,22 +15,21 @@ In the case of AM, it is the pixel region where noise cannot be added, and in th
 In each defense scheme, the detection accuracy can be improved by feeding those yellow region effectively to the CNN model.
 The representative schemes are explained in the following sections.
 
-\begin{figure}[p]
+\begin{figure}[h]
  \centering
- \hspace{-55pt}
- \includegraphics[scale=0.5, bb=10 50 200 100]{./figures/propAM.pdf}
- \caption{The valuable/manipulated regions in AM} 
+ \includegraphics[scale=0.5]{./figures/propAM.pdf}
+ \caption{The valuable/manipulated regions in AM.} 
  \label{fig:propAM}
 \end{figure}
-\begin{figure}[p]
+
+\begin{figure}[h]
  \centering
- \hspace{-100pt}
- \includegraphics[scale=0.5, bb=10 50 100 100]{./figures/propOM.pdf}
- \caption{The valuable/manipulated regions in OM} 
+ \includegraphics[scale=0.5]{./figures/propOM.pdf}
+ \caption{The valuable/manipulated regions in OM.} 
  \label{fig:propOM}
 \end{figure}
-\afterpage{\clearpage}
-\newpage
+%\afterpage{\clearpage}
+%\newpage
 
 \section{Defense scheme against AM}
 A defense scheme against AM, which is a malware whose GSI is manipulated, is explained in this section.
@@ -51,14 +50,14 @@ Hence, we utilize JPs, which locate in this area, for our detection as it is.
 
 By doing this denoising process, the detection without being misled by AMs would be possible since only the pixels which tend to be not manipulated can be used for our classification.
 
-\begin{figure}[p]
+\begin{figure}[h]
  \centering
- \hspace{-55pt}
- \includegraphics[scale=0.5, bb=10 50 800 100]{./figures/denoise.pdf}
- \caption{The difference with before and after denoising AM GSI} 
+ %\hspace{-55pt}
+ \includegraphics[scale=0.5]{./figures/denoise.pdf}
+ \caption{The difference with before and after denoising AM GSI.} 
  \label{fig:denoise}
 \end{figure}
-\afterpage{\clearpage}
+%\afterpage{\clearpage}
 \newpage
 \section{Defense scheme against OM}
 A defense scheme against OM, which is a malware whose BD is obfuscated with packing tools, is explained in this section.
@@ -81,18 +80,18 @@ Furthermore, it is possible to avoid the degradation of valuable pixel weight by
 
 As described above, by using 1D filters to show the horizontal correlations between encrypted byte sequences, we can improve the detection accuracy by highlighting features retained in the OM which are valuable for training CNN model even under the static analysis.
 
-\begin{figure}[p]
+\begin{figure}[h]
  \centering
- \hspace{-55pt}
- \includegraphics[scale=0.5, bb=10 50 500 100]{./figures/2d.pdf}
- \caption{The flow of convolution with 2D Conv.} 
+ %\hspace{-55pt}
+ \includegraphics[scale=0.5]{./figures/2d.pdf}
+ \caption{The flow of convolution with 2D Conv..} 
  \label{fig:2d}
 \end{figure}
-\begin{figure}[p]
+\begin{figure}[h]
  \centering
- \hspace{-55pt}
- \includegraphics[scale=0.42, bb=10 50 400 100]{./figures/1d.pdf}
- \caption{The flow of convolution with 1D Conv.} 
+ %\hspace{-55pt}
+ \includegraphics[scale=0.42]{./figures/1d.pdf}
+ \caption{The flow of convolution with 1D Conv..} 
  \label{fig:1d}
 \end{figure}
 \afterpage{\clearpage}

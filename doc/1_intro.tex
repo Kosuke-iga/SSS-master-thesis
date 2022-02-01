@@ -9,15 +9,15 @@ Unfortunately, vulnerable IoT devices are spreading since the countermeasures ca
 In fact, as shown in \figurename~\ref{fig:mirai}, attacks against companies using many IoT devices infected with malware have become a problem, and the detection of IoT malware has become an urgent issue.
 Thus, this circumstance results in the urgency of detecting IoT malwares.
 
-\begin{figure}[p]
+\begin{figure}[t]
  \centering
- \hspace{-55pt}
- \includegraphics[scale=0.5, bb=10 50 780 100]{./figures/mirai.pdf}
- \caption{The case of attack damage by Mirai malwares} 
+ %\hspace{-55pt}
+ \includegraphics[scale=0.5]{./figures/mirai.pdf}
+ \caption{The case of attack damage by Mirai malwares.} 
  \label{fig:mirai}
 \end{figure}
-\afterpage{\clearpage}
-\newpage
+%\afterpage{\clearpage}
+%\newpage
 Existing solutions for detecting malwares are mainly classified into router-side schemes \cite{net} and device-side schemes \cite{cfg}.
 
 Router-side schemes pay attention to the fact that there exists strong evidences of malwares in network traffic.
@@ -28,28 +28,28 @@ Although router-side schemes are useful, these schemes are subject to internal a
 In order to cope with the limitations of router-side schemes, device-side schemes are proposed.
 Device-side schemes are conducted by utilizing the features extracted from malware itself at each IoT devices.
 Most of the device-side schemes utilze various features which can be extract statically since IoT devices are not suitable for dynamic detections due to their limited computing and storage capabilities.
-\cite{cfg} utilezes the features regarding to Control Flow Graphs (CFGs) acquired by complicated analysis and definitions of the features.
-Although \cite{cfg} can extract represantative features of the application, it is a time-consuming and laborious method due to the analysis for an enormous number of IoT malwares.
+Kumar et al. utilezes the features regarding to Control Flow Graphs (CFGs) acquired by complicated analysis and definitions of the features \cite{cfg}.
+Although that scheme can extract represantative features of the application, it is a time-consuming and laborious method due to the analysis for an enormous number of IoT malwares.
 
 In order to cope with the spreading IoT malwares with device-side detections, some researchers utilize Convolutional Neural Network (CNN) in their scheme.
-\cite{previous} utilezes GrayScale Image (GSI) converted from raw bytes of each malware binary for its CNN.
+Su et al. utilezes GrayScale Image (GSI) converted from raw bytes of each malware binary for its CNN \cite{previous}.
 Although it is suitable for IoT malware detection since CNN can extract malware features from GSI automatically without feature engineering, it can be avoided with evasive techniques by adversaries to GSI or Binary Data (BD) of malware. 
 
-In order to detect such malwares with exisiting evasive techniques, that is manipulated GSIs and BD, in this paper, we propose an evasion-resilient IoT malware detection scheme with invalidating adversarial byte sequences and 1D convolutional filters.
+In order to detect such malwares with exisiting evasive techniques, that is manipulated GSIs and BD, in this thesis, we propose an evasion-resilient IoT malware detection scheme with invalidating adversarial byte sequences and 1D convolutional filters.
 The main idea of our scheme is that the some regions which contribute to decision making in each manipulated target still remain after the evasive techniques by adverasaries. 
-We aim to improve the detection accuracy by statically by statically extracting/enhancing each beneficial region of the manipulated target for the CNN model.
+This research aims to improve the detection accuracy by statically by statically extracting/enhancing each beneficial region of the manipulated target for the CNN model.
 
-The contributions of this paper are as follows: 
+The contributions of this thesis are as follows: 
 \begin{itemize}
  \item I find the valuable regions which remain in adversarial malware and improve the detection accuracy of them by denoising procedure.
  \item I find the valuable features which obfuscated malware have and improve the detection accuracy of them by emphasizeing their valuable regions to CNN model.
- \item To the best of my knowledge, there is currenlty no reference to research defense schemes against the evasive techniques by adversaries. However, it is considered in this paper, and, furthermore, give effective solutions.
+ \item To the best of my knowledge, there is currenlty no reference to research defense schemes against the evasive techniques by adversaries. However, it is considered in this thesis, and, furthermore, give effective solutions.
 \end{itemize}
 
-The rest of this paper is constructed as follows. 
+The rest of this thesis is constructed as follows. 
 After this introduction, related work are introduced in Section \ref{sec:related_work}.
 The previous scheme and the issues of that scheme are explained in Section \ref{sec:previous_scheme}.
 Proposed scheme is described in Section \ref{sec:proposed_scheme}.
 Various evaluation results are shown in Section \ref{sec:evaluation}.
-Finally, the conclusions of this paper are presented in Section \ref{sec:conclusion}.
+Finally, the conclusions of this thesis are presented in Section \ref{sec:conclusion}.
 

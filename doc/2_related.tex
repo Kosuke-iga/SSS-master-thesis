@@ -18,15 +18,15 @@ By being based on the scanning/propagation phase, it can detect and isolate the 
 However, that scheme is subject to local network attacks where IoT devices are targeted directly by adversaries in the same local network.
 Thus, exploring the malware detection schemes which can be realized by each IoT device is needed due to the vulnerability against local network attacks.
 
-\begin{figure}[p]
+\begin{figure}[h]
  \centering
- \hspace{-55pt}
- \includegraphics[scale=0.5, bb=10 50 740 100]{./figures/lan.pdf}
- \caption{The router-side detection in the scanning/propagation flow and its problem} 
+ %\hspace{-55pt}
+ \includegraphics[scale=0.5]{./figures/lan.pdf}
+ \caption{The router-side detection in the scanning/propagation flow and its problem.} 
  \label{fig:lan}
 \end{figure}
-\afterpage{\clearpage}
-\newpage
+%\afterpage{\clearpage}
+%\newpage
 
 \section{Device-side detection} 
 Device-side detection schemes are conducted by utilizing the features extracted from malware file itself at each device on the basis of malwares are tend to have similality among them since adversaries make them based on the existing ones.
@@ -36,11 +36,11 @@ Alasmary et al. \cite{cfg} propose the scheme which utilizes the features acquir
 The theoretic metrics of CFGs, such as the number of edges, density of a graph, shortest paths between each node and so on, can be multiple features of the model effctively derived from malware constructions under the limitation of static approach.
 However, that scheme is a time-consuming and laborious method due to the feature engineering for exploring effective metrics with analysing an enormous number of IoT malwares.
 
-\begin{figure}[p]
+\begin{figure}[h]
  \centering
- \hspace{-55pt}
- \includegraphics[scale=0.5, bb=10 50 720 100]{./figures/cfg.pdf}
- \caption{The overview of device-side detection using CFG} 
+ %\hspace{-55pt}
+ \includegraphics[scale=0.5]{./figures/cfg.pdf}
+ \caption{The overview of device-side detection using CFG.} 
  \label{fig:cfg}
 \end{figure}
 \afterpage{\clearpage}

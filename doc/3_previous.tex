@@ -14,24 +14,24 @@ Since, CNN can extract effective features from these GSI automatically by learni
 Furthermore, once trained, the network itself is lightweight and can be run with tiny computational resources, since only the trained parameters and information of network structure are kept.
 Thus, CNN is a suitable scheme for IoT malware detections since it does not demand feature engineering and also computational costs while the detection.
 
-\begin{figure}[p]
+\begin{figure}[h]
  \centering
- \hspace{-55pt}
- \includegraphics[scale=0.5, bb=10 50 500 100]{./figures/malGSI.pdf}
- \caption{The malware GSIs} 
+ %\hspace{-55pt}
+ \includegraphics[scale=0.5]{./figures/malGSI.pdf}
+ \caption{The malware GSIs.} 
  \label{fig:malGSI}
 \end{figure}
 %\afterpage{\clearpage}
 %\newpage
-\begin{figure}[p]
+\begin{figure}[h]
  \centering
- \hspace{-55pt}
- \includegraphics[scale=0.5, bb=10 50 700 100]{./figures/benGSI.pdf}
- \caption{The benign file GSIs} 
+ %\hspace{-55pt}
+ \includegraphics[scale=0.5]{./figures/benGSI.pdf}
+ \caption{The benign file GSIs.} 
  \label{fig:benGSI}
 \end{figure}
-\afterpage{\clearpage}
-\newpage
+%\afterpage{\clearpage}
+%\newpage
 
 \section{Issues of the previous scheme } 
 Although the previous scheme can cope with spreading IoT malwares with device-side detection in more practical means, it is susceptible to evasive techniques against the inputs of the CNN, GSIs and binary \cite{attack1, attack2}.
@@ -39,14 +39,14 @@ Adversaries can evade the CNN based detection with two evasive techniques agains
 Malwares whose GSIs are manipulated to evade the detection are called Adversarial Malware (AM) and also malwares whose binary is manipulated are called Obfuscated Malware (OM) in this research.  
 The representative vulnerabilities against each attack are explained in the following subsections.
 
-\begin{figure}[p]
+\begin{figure}[h]
  \centering
- \hspace{-55pt}
- \includegraphics[scale=0.5, bb=10 50 800 100]{./figures/overview.pdf}
- \caption{The overview of evasive techniques} 
+ %\hspace{-55pt}
+ \includegraphics[scale=0.5]{./figures/overview.pdf}
+ \caption{The overview of evasive techniques.} 
  \label{fig:ov}
 \end{figure}
-\afterpage{\clearpage}
+%\afterpage{\clearpage}
 \newpage
 
 \subsection{Vulnerability against GSI manipulation}
@@ -57,14 +57,14 @@ The noise is added to the GSI of AM by manipulating the pixel values of pixel th
 By adding the noise in this way, the AM can mislead CNN as benign in the previous scheme.
 The AM attack is a threat to CNN detection since it allows the classifier to intentionally judge the malware as benign while maintaining the original behaviour of malware.
 
-\begin{figure}[p]
+\begin{figure}[h]
  \centering
- \hspace{-55pt}
- \includegraphics[scale=0.5, bb=10 50 780 100]{./figures/AM.pdf}
- \caption{The AM GSIs} 
+ %\hspace{-55pt}
+ \includegraphics[scale=0.5]{./figures/AM.pdf}
+ \caption{The AM GSIs.} 
  \label{fig:amGSI}
 \end{figure}
-\afterpage{\clearpage}
+%\afterpage{\clearpage}
 \newpage
 \subsection{Vulnerability against binary manipulation}
 The binary which converts to a GSI can also be manipulated to evade the CNN detection by being obfuscated \cite{om}.
@@ -72,16 +72,27 @@ Due to the small computational resources, obfuscation techniques with packing to
 As shown in \figurename~\ref{fig:omGSI}, the original BD is compressed and encrypted at the same time, and new headers and tool-dependent data which do not contribute to the decision for detection are inserted.
 In addition to the fact that malware obfuscated with the packing tools can be recovered and analyzed only at runtime, the encryption method differs depending on the packing tool.Thus, binary manipulation attack is a threat especially for IoT devices which are not suitable for dynamic analysis due to the limited computing resources since there is no way to statically analyze them in advance.
 
-\begin{figure}[p]
+\begin{figure}[h]
  \centering
- \hspace{-55pt}
- \includegraphics[scale=0.5, bb=10 50 780 100]{./figures/OM.pdf}
- \caption{The OM GSIs} 
+ %\hspace{-55pt}
+ \includegraphics[scale=0.5]{./figures/OM.pdf}
+ \caption{The OM GSIs.} 
  \label{fig:omGSI}
 \end{figure}
-\begin{table}[p]
+\newpage
+
+
+\paragraph*{}
+While previous scheme based on CNN can achieve high accuracy in detection, it is vulnerable against the above two attacks which aim to evade detection resulting in lower detection accuracy.
+In fact, \tablename~\ref{tab:prev} shows the original accuracy and the degradation of them by each attack.
+The accuracy, which achieves 99.8\%, drops to 66.1\% under the AM attack with GSI manipulation and 86.2\% under the OM attack with BD manipulation.
+The results indicate that the previous scheme is vulnerable to these attacks.
+
+Hence, in this reserch, I aim to propose defense methods against the evasive techniques on different targets, GSI and BD, for the practical use of static detection based on CNN.
+
+\begin{table}[h]
   \begin{center}
-    \caption{Detection accuracy of original/manipulated malwares}
+    \caption{Detection accuracy of original/manipulated malwares.}
     \label{tab:prev} 
     \begin{tabular}{|c|c|c|} \hline
        & Manipulation Target & Accuracy (\%) \\ \hline \hline
@@ -91,15 +102,6 @@ In addition to the fact that malware obfuscated with the packing tools can be re
     \end{tabular}
   \end{center}
 \end{table} 
-\afterpage{\clearpage}
-\newpage
-
-\paragraph*{}
-While previous scheme based on CNN can achieve high accuracy in detection, it is vulnerable against the above two attacks which aim to evade detection resulting in lower detection accuracy.
-In fact, \tablename~\ref{tab:prev} shows the original accuracy and the degradation of them by each attack.
-The accuracy, which achieves 99.8\%, drops to 66.1\% under the AM attack with GSI manipulation and 86.2\% under the OM attack with BD manipulation.
-The results indicate that the previous scheme is vulnerable to these attacks.
-
-Hence, in this reserch, we aim to propose defense methods against the evasive techniques on different targets, GSI and BD, for the practical use of static detection based on CNN.
-
+%\afterpage{\clearpage}
+%\newpage
 \newpage
