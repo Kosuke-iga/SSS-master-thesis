@@ -13,12 +13,11 @@ Thus, this circumstance results in the urgency of detecting IoT malwares.
  \centering
  \hspace{-55pt}
  \includegraphics[scale=0.5, bb=10 50 780 100]{./figures/mirai.pdf}
- \caption{The case of attack damage by Mirai malware} 
+ \caption{The case of attack damage by Mirai malwares} 
  \label{fig:mirai}
 \end{figure}
 \afterpage{\clearpage}
 \newpage
-%Existing practical solutions for detecting malwares are all static approaches since they are not suitable for dynamic approach due to limited computational resources of them.
 Existing solutions for detecting malwares are mainly classified into router-side schemes \cite{net} and device-side schemes \cite{cfg}.
 
 Router-side schemes pay attention to the fact that there exists strong evidences of malwares in network traffic.
@@ -42,15 +41,15 @@ We aim to improve the detection accuracy by statically by statically extracting/
 
 The contributions of this paper are as follows: 
 \begin{itemize}
- \item We find the the valuable regions which remain in adversarial malware and improve the detection accuracy of them by denoising procedure.
- \item We find the the valuable features which obfuscated malware have and improve the detection accuracy of them by emphasizeing their valuable regions to CNN model.
+ \item I find the valuable regions which remain in adversarial malware and improve the detection accuracy of them by denoising procedure.
+ \item I find the valuable features which obfuscated malware have and improve the detection accuracy of them by emphasizeing their valuable regions to CNN model.
  \item To the best of my knowledge, there is currenlty no reference to research defense schemes against the evasive techniques by adversaries. However, it is considered in this paper, and, furthermore, give effective solutions.
 \end{itemize}
 
 The rest of this paper is constructed as follows. 
-After this introduction, related works are introduced in Section \ref{sec:related_work}.
-The previous scheme and the shortcoming of that scheme are explained in Section \ref{sec:previous_scheme}.
+After this introduction, related work are introduced in Section \ref{sec:related_work}.
+The previous scheme and the issues of that scheme are explained in Section \ref{sec:previous_scheme}.
 Proposed scheme is described in Section \ref{sec:proposed_scheme}.
-Various evaluation results are their interpretation are shown in Section \ref{sec:evaluation}.
+Various evaluation results are shown in Section \ref{sec:evaluation}.
 Finally, the conclusions of this paper are presented in Section \ref{sec:conclusion}.
 

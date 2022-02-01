@@ -7,7 +7,7 @@ The representative schemes are explained in the following subsections.
 
 \section{Router-side detection}
 Router-side detctions leverage the fact that there exists strong evidence of malwares in network traffic.
-Kumar et al. \cite{router} propose the scheme focusing on network traffic while the scanning and propagation phase in particular which is observed in most of the existing malware behaviour for the purpose of building a botnet as shown in \figurename~\ref{fig:lan}. 
+Kumar et al. \cite{net} propose the scheme focusing on network traffic while the scanning and propagation phase in particular which is observed in most of the existing malware behaviour for the purpose of building a botnet as shown in \figurename~\ref{fig:lan}. 
 That scheme detect abnormal traffic caused while this phase which cannot be seen in benign cases utilizing machine learning.
 It utilizes the number of unique destination IP addresses and packets per destination IP addresses as features observing incoming packets which have spcific target destination port number that the existing malwares tend to send.
 The number of unique destination IP addresses in case of malware-induced scanning traffic will be far more than benign traffic since the malware generate random IP addresses and send malicious requests to them.

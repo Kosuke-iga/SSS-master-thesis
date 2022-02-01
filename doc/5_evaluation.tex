@@ -19,7 +19,7 @@ where TP, TN, FP, and FN denote the number of True Positive (malwares are regard
 																							 & VirusTotal\cite{virustotal}\\ \hline
 			The number of benign files  & 1,442 \\  \hline
 			The number of malwares  &  7,263 \\ \hline
-			The AM attack method & White-box \cite{yamafumi} \\ \hline
+			The AM attack method & White-box \cite{am, yamafumi} \\ \hline
 			\multirow{2}{*}{\hfill The packing tools for OM  \hfill} & UPX\cite{upx} \\ & kiteshield\cite{kiteshield} \\ \hline
 			The number of samples  & \multirow{2}{*}{\hfill 800 \hfill} \\  
 			in AM-resiliency evaluation & \\ \hline 
@@ -36,7 +36,7 @@ In order to use those samples as inputs for CNN, we convert each sample to the c
 In particular, a binary can be reformatted to a sequence whose elements are 8-bit strings.
 Then, each string can be converted to a decimal number which can be seen as the value of a one-channel pixel.
 After that, we rescale the GSIs to the size of 64*64 such that they can be input to the CNN.
-In particular, manipulated malwares for each attack are created with an adversarial technique implemented in \cite{ae} and two packing tools \cite{upx, kiteshield} shown in \tablename~\ref{tab:simulation_parameters}.
+In particular, manipulated malwares for each attack are created with an adversarial technique implemented in \cite{am, yamafumi} and two packing tools \cite{upx, kiteshield} shown in \tablename~\ref{tab:simulation_parameters}.
 
 In the case of AM-resiliency evaluation, we apply a white-box method as a adversarial technique for AM, where an the adversary knows the training data and the structure of the CNN model since it is currently the mainstream in this reserch field.
 
