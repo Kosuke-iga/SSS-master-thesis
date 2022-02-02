@@ -8,10 +8,10 @@ The representative schemes are explained in the following subsections.
 \section{Router-side detection}
 Router-side detctions leverage the fact that there exists strong evidence of malware in network traffic.
 Kumar et al. \cite{net} propose the scheme focusing on network traffic while the scanning and propagation phase in particular which is observed in most of the existing malware behaviour for the purpose of building a botnet as shown in \figurename~\ref{fig:lan}. 
-That scheme detect abnormal traffic caused while this phase which cannot be seen in benign cases utilizing machine learning.
+That scheme detects abnormal traffic caused while this phase which cannot be seen in benign cases utilizing machine learning.
 It utilizes the number of unique destination IP addresses and packets per destination IP addresses as features observing incoming packets which have spcific target destination port number that the existing malware tend to send.
-The number of unique destination IP addresses in case of malware-induced scanning traffic will be far more than benign traffic since the malware generate random IP addresses and send malicious requests to them.
-Also, the number of packets per destination IP addresses seeks to exploit the fact that malware typically do not send mulitiple malicious packets to the same IP addresses (only a single packet is sent in most cases), possibly to cover as many devices as possible during the scanning/propagation phase.
+The number of unique destination IP addresses in case of malware-induced scanning traffic will be far more than benign traffic since the malware generates random IP addresses and sends malicious requests to them.
+Also, the number of packets per destination IP addresses seeks to exploit the fact that malware typically does not send mulitiple malicious packets to the same IP addresses (only a single packet is sent in most cases), possibly to cover as many devices as possible during the scanning/propagation phase.
 
 By being based on the scanning/propagation phase, it can detect and isolate the bots before they can participate in an actual attack such as DDoS.
 
@@ -29,7 +29,7 @@ Thus, exploring the malware detection schemes which can be realized by each IoT 
 %\newpage
 
 \section{Device-side detection} 
-Device-side detection schemes are conducted by utilizing the features extracted from malware file itself at each device on the basis of malware are tend to have similality among them since adversaries make them based on the existing ones \cite{om, cfg}.
+Device-side detection schemes are conducted by utilizing the features extracted from malware file itself at each device on the basis of malware, and they tend to have similality since adversaries make them based on the existing ones \cite{om, cfg}.
 Most of them utilize various features which can be extracted statically since IoT devices are not suitable for dynamic approach due to their limited computing and storage capabilities.
 
 Torabi et al. propose the scheme which utilizes meaningful strings from the binary code, such as IP addresses of adversarial hosts (e.g., C\&C servers) and/or embedded commands/payloads \cite{om}.

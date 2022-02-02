@@ -1,7 +1,7 @@
 \chapter{Introduction}\markright{Chapter 1: Introduction}\label{Sec:Introduction}
 
 In these days, the Internet of Things (IoT) is interconnetcting a large number of electronic devices with a variety of applications in our lives, such as smart appliances, smart houses, smart grid, energy management systems, and so on, at a tremendous speed.
-The number of the IoT devices is continue to increase.
+The number of the IoT devices is continuously increased.
 It is estimated to be about 50 billion all over the world by 2030 \cite{bg1, bg2}.
 They become targets of malware attacks due to the rapid increase and the development into devices which have interconnectivity in these days.
 Unfortunately, vulnerable IoT devices are spreading since the countermeasures cannot keep up with this trend of IoT malware attacks.
@@ -18,16 +18,16 @@ Thus, this circumstance results in the urgency of detecting IoT malware.
 \end{figure}
 %\afterpage{\clearpage}
 %\newpage
-Existing solutions for detecting malware are mainly classified into router-side schemes \cite{net} and device-side schemes \cite{cfg}.
+Existing solutions for detecting malware are mainly classified into router-side schemes \cite{net} and device-side schemes \cite{om, cfg}.
 
-Router-side schemes pay attention to the fact that there exists strong evidences of malware in network traffic.
-This is because adversaries have to scan IoT devices and propagate their malware before attacking itself and theses phases cause abnormal traffic which cannot be seen in benign case.
+Router-side schemes pay attention to the fact that there exist strong evidences of malware in network traffic.
+This is because adversaries have to scan IoT devices and propagate their malware before attacking itself and these phases cause abnormal traffic which cannot be seen in benign case.
 Based on the fact, those scheme utilize the features extracted from incoming packets in the scanning/propagation phase such as destination IP address during a certain time, port number and so on, at a gateway of the network.
 Although router-side schemes are useful, these schemes are subject to internal attacks of the local network itself since the packets do not go through the router.
 
 In order to cope with the limitations of router-side schemes, device-side schemes are proposed.
 Device-side schemes are conducted by utilizing the features extracted from malware itself at each IoT devices.
-Most of the device-side schemes utilze various features which can be extract statically since IoT devices are not suitable for dynamic detections due to their limited computing and storage capabilities.
+Most of the device-side schemes utilze various features which can be extracted statically since IoT devices are not suitable for dynamic detections due to their limited computing and storage capabilities.
 Kumar et al. utilezes the features regarding to Control Flow Graphs (CFGs) acquired by complicated analysis and definitions of the features \cite{cfg}.
 Although that scheme can extract represantative features of the application, it is a time-consuming and laborious method due to the analysis for an enormous number of IoT malware.
 
