@@ -1,13 +1,13 @@
 \chapter{Previous Scheme}\markright{Previous Scheme}\label{sec:previous_scheme}
 \section{Overview of the previous scheme} 
-In order to deal with spreading IoT malwares with device-side detections in more practical means, CNN is utilized in the previous scheme \cite{previous}.
+In order to deal with spreading IoT malware with device-side detections in more practical means, CNN is utilized in the previous scheme \cite{previous}.
 Our research is more practical scheme which applys this device-side detection with CNN improving its issues.
 The main idea of the previous scheme is that there exists the difference of GSIs converted from each malware Binary Data (BD) which is always acquired in IoT devices due to the exectable format of them.
 In that scheme \cite{previous}, a malware binary is reformatted as an 8-bit sequence and then be converted to a GSI which has one channel and pixel values from 0 to 255.
 To confirm the performance of the scheme, some samples of malware and benign software GSIs are prepared in our research and shown by \figurename~\ref{fig:malGSI} and \figurename~\ref{fig:benGSI}.
 By comparison, some novel differences between them can be observed even by human eyes.
 For example, it can be seen that malware GSIs always are more dense.
-On the other hand, the GSI of benign softwares tend to have larger header parts than malwares.
+On the other hand, the GSI of benign softwares tend to have larger header parts than malware.
 
 These GSIs can represents each features and be fed into CNN.
 Since, CNN can extract effective features from these GSI automatically by learning deep non-linear features even that can be hardly descovered and understood by human eyes.
@@ -34,9 +34,9 @@ Thus, CNN is a suitable scheme for IoT malware detections since it does not dema
 %\newpage
 
 \section{Issues of the previous scheme } 
-Although the previous scheme can cope with spreading IoT malwares with device-side detection in more practical means, it is susceptible to evasive techniques against the inputs of the CNN, GSIs and binary \cite{attack1, attack2}.
+Although the previous scheme can cope with spreading IoT malware with device-side detection in more practical means, it is susceptible to evasive techniques against the inputs of the CNN, GSIs and binary \cite{attack1, attack2}.
 Adversaries can evade the CNN based detection with two evasive techniques against each input as shown in \figurename~\ref{fig:ov}.
-Malwares whose GSIs are manipulated to evade the detection are called Adversarial Malware (AM) and also malwares whose binary is manipulated are called Obfuscated Malware (OM) in this research.  
+Malwares whose GSIs are manipulated to evade the detection are called Adversarial Malware (AM) and also malware whose binary is manipulated are called Obfuscated Malware (OM) in this research.  
 The representative vulnerabilities against each attack are explained in the following subsections.
 
 \begin{figure}[h]
@@ -92,7 +92,7 @@ Hence, in this reserch, I aim to propose defense methods against the evasive tec
 
 \begin{table}[h]
   \begin{center}
-    \caption{Detection accuracy of original/manipulated malwares.}
+    \caption{Detection accuracy of original/manipulated malware.}
     \label{tab:prev} 
     \begin{tabular}{|c|c|c|} \hline
        & Manipulation Target & Accuracy (\%) \\ \hline \hline

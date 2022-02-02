@@ -1,15 +1,15 @@
 \chapter{Related Work}\markright{Chapter 2: Related Work}\label{sec:related_work} 
-In order to detect IoT malwares, several schemes have been proposed. 
+In order to detect IoT malware, several schemes have been proposed. 
 These schemes are divided into router-side detection and device-side detection.
 Router-side detection is performed at a gateway on the basis of the features regarding propagation behavior for building a botnet.
 Meanwhile, device-side detection is conducted at each IoT device by utilizing static features extracted from malware itself.
 The representative schemes are explained in the following subsections.
 
 \section{Router-side detection}
-Router-side detctions leverage the fact that there exists strong evidence of malwares in network traffic.
+Router-side detctions leverage the fact that there exists strong evidence of malware in network traffic.
 Kumar et al. \cite{net} propose the scheme focusing on network traffic while the scanning and propagation phase in particular which is observed in most of the existing malware behaviour for the purpose of building a botnet as shown in \figurename~\ref{fig:lan}. 
 That scheme detect abnormal traffic caused while this phase which cannot be seen in benign cases utilizing machine learning.
-It utilizes the number of unique destination IP addresses and packets per destination IP addresses as features observing incoming packets which have spcific target destination port number that the existing malwares tend to send.
+It utilizes the number of unique destination IP addresses and packets per destination IP addresses as features observing incoming packets which have spcific target destination port number that the existing malware tend to send.
 The number of unique destination IP addresses in case of malware-induced scanning traffic will be far more than benign traffic since the malware generate random IP addresses and send malicious requests to them.
 Also, the number of packets per destination IP addresses seeks to exploit the fact that malware typically do not send mulitiple malicious packets to the same IP addresses (only a single packet is sent in most cases), possibly to cover as many devices as possible during the scanning/propagation phase.
 
@@ -29,12 +29,21 @@ Thus, exploring the malware detection schemes which can be realized by each IoT 
 %\newpage
 
 \section{Device-side detection} 
-Device-side detection schemes are conducted by utilizing the features extracted from malware file itself at each device on the basis of malwares are tend to have similality among them since adversaries make them based on the existing ones.
+Device-side detection schemes are conducted by utilizing the features extracted from malware file itself at each device on the basis of malware are tend to have similality among them since adversaries make them based on the existing ones \cite{om, cfg}.
 Most of them utilize various features which can be extracted statically since IoT devices are not suitable for dynamic approach due to their limited computing and storage capabilities.
 
-Alasmary et al. \cite{cfg} propose the scheme which utilizes the features acquired from a Control Flow Graph (CFG), which could be used to extract representative static features of the application as shown in \figurename~\ref{fig:cfg}.
+Torabi et al. propose the scheme which utilizes meaningful strings from the binary code, such as IP addresses of adversarial hosts (e.g., C\&C servers) and/or embedded commands/payloads \cite{om}.
+That scheme focus on the fact that IoT malware need to communicate with adversarial hosts to obtain malicious command/payload and upload gathered information.
+This is typically achieved by embedding a series of commands and IP addresses to ensure successful post-infection communication for operating further malicious activities. 
+Although that scheme realizes lightweight static detection with simple reverse-engineering techniques, its detection can be easily avoided by malware where the meaningful strings are obfuscated in order to hide them with simple obfuscation techniques.
+Such obfuscation techniques can be applied even on IoT devices where the computing and storage capabilities are limited.
+
+In order to avoid easily detection rejection by adversaries, Alasmary et al. \cite{cfg} propose the scheme which utilizes the features acquired from a Control Flow Graph (CFG), which could be used to extract representative static features of the application as shown in \figurename~\ref{fig:cfg}.
 The theoretic metrics of CFGs, such as the number of edges, density of a graph, shortest paths between each node and so on, can be multiple features of the model effctively derived from malware constructions under the limitation of static approach.
-However, that scheme is a time-consuming and laborious method due to the feature engineering for exploring effective metrics with analysing an enormous number of IoT malwares.
+That scheme focus on the fact that some defferences in those metrics can be observed between benign software and IoT malware.
+In that research, they reveal that IoT malware, and also each malware family, have various algorithmic and structural properties through complex analysis of CFGs acquired from about 6000 malware and benign software as shown in \figurename~\ref{fig:cfg}. 
+Utilizing such properties of the CFGs, that scheme realize high accurate detection.
+However, that scheme is a time-consuming and laborious method due to the feature engineering for exploring effective metrics with analysing an enormous number of IoT malware.
 
 \begin{figure}[h]
  \centering

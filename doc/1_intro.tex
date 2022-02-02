@@ -7,20 +7,20 @@ They become targets of malware attacks due to the rapid increase and the develop
 Unfortunately, vulnerable IoT devices are spreading since the countermeasures cannot keep up with this trend of IoT malware attacks.
 \figurename~\ref{fig:mirai} represents an actual case of attack damage by malware called Mirai.
 In fact, as shown in \figurename~\ref{fig:mirai}, attacks against companies using many IoT devices infected with malware have become a problem, and the detection of IoT malware has become an urgent issue.
-Thus, this circumstance results in the urgency of detecting IoT malwares.
+Thus, this circumstance results in the urgency of detecting IoT malware.
 
 \begin{figure}[t]
  \centering
  %\hspace{-55pt}
  \includegraphics[scale=0.5]{./figures/mirai.pdf}
- \caption{The case of attack damage by Mirai malwares.} 
+ \caption{The case of attack damage by Mirai malware.} 
  \label{fig:mirai}
 \end{figure}
 %\afterpage{\clearpage}
 %\newpage
-Existing solutions for detecting malwares are mainly classified into router-side schemes \cite{net} and device-side schemes \cite{cfg}.
+Existing solutions for detecting malware are mainly classified into router-side schemes \cite{net} and device-side schemes \cite{cfg}.
 
-Router-side schemes pay attention to the fact that there exists strong evidences of malwares in network traffic.
+Router-side schemes pay attention to the fact that there exists strong evidences of malware in network traffic.
 This is because adversaries have to scan IoT devices and propagate their malware before attacking itself and theses phases cause abnormal traffic which cannot be seen in benign case.
 Based on the fact, those scheme utilize the features extracted from incoming packets in the scanning/propagation phase such as destination IP address during a certain time, port number and so on, at a gateway of the network.
 Although router-side schemes are useful, these schemes are subject to internal attacks of the local network itself since the packets do not go through the router.
@@ -29,13 +29,13 @@ In order to cope with the limitations of router-side schemes, device-side scheme
 Device-side schemes are conducted by utilizing the features extracted from malware itself at each IoT devices.
 Most of the device-side schemes utilze various features which can be extract statically since IoT devices are not suitable for dynamic detections due to their limited computing and storage capabilities.
 Kumar et al. utilezes the features regarding to Control Flow Graphs (CFGs) acquired by complicated analysis and definitions of the features \cite{cfg}.
-Although that scheme can extract represantative features of the application, it is a time-consuming and laborious method due to the analysis for an enormous number of IoT malwares.
+Although that scheme can extract represantative features of the application, it is a time-consuming and laborious method due to the analysis for an enormous number of IoT malware.
 
-In order to cope with the spreading IoT malwares with device-side detections, some researchers utilize Convolutional Neural Network (CNN) in their scheme.
+In order to cope with the spreading IoT malware with device-side detections, some researchers utilize Convolutional Neural Network (CNN) in their scheme.
 Su et al. utilezes GrayScale Image (GSI) converted from raw bytes of each malware binary for its CNN \cite{previous}.
 Although it is suitable for IoT malware detection since CNN can extract malware features from GSI automatically without feature engineering, it can be avoided with evasive techniques by adversaries to GSI or Binary Data (BD) of malware. 
 
-In order to detect such malwares with exisiting evasive techniques, that is manipulated GSIs and BD, in this thesis, we propose an evasion-resilient IoT malware detection scheme with invalidating adversarial byte sequences and 1D convolutional filters.
+In order to detect such malware with exisiting evasive techniques, that is manipulated GSIs and BD, in this thesis, we propose an evasion-resilient IoT malware detection scheme with invalidating adversarial byte sequences and 1D convolutional filters.
 The main idea of our scheme is that the some regions which contribute to decision making in each manipulated target still remain after the evasive techniques by adverasaries. 
 This research aims to improve the detection accuracy by statically by statically extracting/enhancing each beneficial region of the manipulated target for the CNN model.
 

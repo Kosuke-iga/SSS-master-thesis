@@ -4,7 +4,7 @@ Accuracy is calculated as:
 \begin{equation}
   \mathrm{Accuracy} = \frac{\mathrm{TP}+\mathrm{TN}}{\mathrm{TP} + \mathrm{TN} + \mathrm{FP} + \mathrm{FN}}, 
 \end{equation}
-where TP, TN, FP, and FN denote the number of True Positive (malwares are regarded as malwares), True Negative (benign files are regarded as benign ones), False Positive (benign files are regarded as malwares), and False Negative (malwares are regarded as benign files), respectively.  
+where TP, TN, FP, and FN denote the number of True Positive (malware are regarded as malware), True Negative (benign files are regarded as benign ones), False Positive (benign files are regarded as malware), and False Negative (malware are regarded as benign files), respectively.  
 
 \section{Simulaion parameters}
 \tablename~\ref{tab:simulation_parameters} shows our simulation parameters.  
@@ -18,7 +18,7 @@ where TP, TN, FP, and FN denote the number of True Positive (malwares are regard
 			\multirow{2}{*}{\hfill Malwares  \hfill} & IoTPOT\cite{iotpot} \\ 
 																							 & VirusTotal\cite{virustotal}\\ \hline
 			Number of benign files  & 1,442 \\  \hline
-			Number of malwares  &  7,263 \\ \hline
+			Number of malware  &  7,263 \\ \hline
 			AM attack method & White-box \cite{am, yamafumi} \\ \hline
 			\multirow{2}{*}{\hfill Packing tools for OM  \hfill} & UPX\cite{upx} \\ & kiteshield\cite{kiteshield} \\ \hline
 			Number of samples  & \multirow{2}{*}{\hfill 800 \hfill} \\  
@@ -31,27 +31,27 @@ where TP, TN, FP, and FN denote the number of True Positive (malwares are regard
 
 
 We use the benign files from Ubuntu system files \cite{ubuntu} as the begin files.
-Meanwhile, malwares are collected from IoTPOT \cite{iotpot} and VirusTotal \cite{virustotal} which is a repository of malware samples for security researchers.
+Meanwhile, malware are collected from IoTPOT \cite{iotpot} and VirusTotal \cite{virustotal} which is a repository of malware samples for security researchers.
 In order to use those samples as inputs for CNN, we convert each sample to the correponding GSI by following the same procedures implemented in \cite{previous}.
 In particular, a binary can be reformatted to a sequence whose elements are 8-bit strings.
 Then, each string can be converted to a decimal number which can be seen as the value of a one-channel pixel.
 After that, we rescale the GSIs to the size of 64*64 such that they can be input to the CNN.
-In particular, manipulated malwares for each attack are created with an adversarial technique implemented in \cite{am, yamafumi} and two packing tools \cite{upx, kiteshield} shown in \tablename~\ref{tab:simulation_parameters}.
+In particular, manipulated malware for each attack are created with an adversarial technique implemented in \cite{am, yamafumi} and two packing tools \cite{upx, kiteshield} shown in \tablename~\ref{tab:simulation_parameters}.
 
 In the case of AM-resiliency evaluation, we apply a white-box method as a adversarial technique for AM, where an the adversary knows the training data and the structure of the CNN model since it is currently the mainstream in this reserch field.
 
-In the case of OM-resiliency evaluation, we use two packing tools, called UPX \cite{upx} and kiteshield \cite{kiteshield}, in order for malwares to be obfuscated.
-The UPX is a tool which is often utilized mainly for software compression purposes and, according to \cite{pack_research}, the use of it is confirmed in more than 50\% of obfuscated malwares. 
+In the case of OM-resiliency evaluation, we use two packing tools, called UPX \cite{upx} and kiteshield \cite{kiteshield}, in order for malware to be obfuscated.
+The UPX is a tool which is often utilized mainly for software compression purposes and, according to \cite{pack_research}, the use of it is confirmed in more than 50\% of obfuscated malware. 
 Meanwhile, the kiteshield is a tool which is often utilized mainly for the purpose of encrypting softwares.
 Especially, in this evaluation, we prepare three dataset on the basis of which tools to be used for their obfuscation in order to show the versatility in that our scheme is independent of the packing tools.
-Two datasets of the three are composed of malwares obfuscated by each packing tooks, UPX and kiteshield, and the other are mixed malwares from those datasets. 
+Two datasets of the three are composed of malware obfuscated by each packing tooks, UPX and kiteshield, and the other are mixed malware from those datasets. 
 
-In the evaluation in respective evaluation, some of the samples from total manipulated malwares, 800 samples in AM attack scenario and 1000 samples in OM attack scenario, are picked randomly, then utilized as inputs in order to keep balance between the number of malwares and that of benign ones.
+In the evaluation in respective evaluation, some of the samples from total manipulated malware, 800 samples in AM attack scenario and 1000 samples in OM attack scenario, are picked randomly, then utilized as inputs in order to keep balance between the number of malware and that of benign ones.
 
 \section{Evaluation of the invalidating adversarial byte sequences against AM attack}
 The effectiveness of the proposed method against AM which invalidates adversarial byte sequences with noise removal in the non-valuable pixels is shown in this subsection.
 We compare the accuracy of our proposed scheme with that of the previous scheme as shown in \figurename~\ref{fig:evalAM}.
-The left graph represents the accuracy of the previous scheme in detecting original malwares, the middle one does that in detecting AM, and the right one does the accuracy of the proposal, where non-valuable pixel values in benign and AM samples are converted to zero.
+The left graph represents the accuracy of the previous scheme in detecting original malware, the middle one does that in detecting AM, and the right one does the accuracy of the proposal, where non-valuable pixel values in benign and AM samples are converted to zero.
 As shown in \figurename~\ref{fig:evalAM}, the proposed scheme achieves improving the accuracy degraded by AM from 66.1\% to 99.4\%.
 Although a slight decrease in detection accuracy is observed compared to the previous scheme and the proposal, the proposal is able to maintain high accuracy.
 Thus, the loss of valuable information for classification by removing noise can be considered to be small.
