@@ -1,131 +1,99 @@
 \chapter{Proposed Scheme}\markright{Chapter 4: Proposed Scheme}\label{sec:proposed_scheme}
 
-\section{idea}
-\Our goal is to design the scheme utilizing the features that are applicable to encrypted traffic data and are hard to be disguised.
-In order to accomplish \our goal, \we propose a detection scheme using features based on destination servers and the level of SSL server certificate.  
-The main idea of \our scheme is that malwares tend to communicate with untrusted destination servers in order to transfer encrypted malicious payloads such as sensitive information and malicious codes.  
-% The useful features which are applicable to encrypted data can be obtained by focusing on the untrusted destination servers since they are extracted without deep packet inspection.
-Untrusted destination servers can be judged by identifying the level of SSL server certificates.  
-% \We can obtain SSL server certificates of servers by using the Openssl command. 
-The level of SSL server certificate is divided into three types, namely Extended Validation (EV), Organization Validation (OV) and Domain Validation (DV) certificates.
-EV and OV certificates are highly trusted certificates, because passing the rigorous examination process such as certifying existence of organizations is required to acquire them. 
-Meanwhile, since a DV certificate is an unreliable one due to lenient examination, the server which has a DV certificate is untrusted one.
-In order to encrypt traffic data, attackers have to acquire SSL server certificates.
-\We argue that attackers tend to exploit a DV certificate to encrypt malicious payload.
-This is because it is hard for them to acquire EV and OV certificates due to rigorous examinations.
-Furthermore, EV and OV certificates are expensive in comparison to a DV certificate.
-Thus, attackers are not willing to introduce expensive certificates to their servers because the objective of them is earning money by selling sensitive information.
-For the above reasons, in many cases, since attackers have no choice but to introduce a DV certificate to servers of them, their servers tend to be untrusted.
-Hence, \our scheme can detect malwares by focusing on the communication with untrusted servers of attackers.
+\section{Approach}
+Our goal is to design the defense scheme against each evasive technique on different targets, GSI and BD, to achive the practical CNN based IoT malware detection on IoT devices.
+In order to accomplish our goal, we propose an evasion-resilient IoT malware detection scheme with invalidating adversarial byte sequences and 1D convolutional filters.  
+The main idea of our scheme is that there still remain regions which contribute to decision making in both manipulated targets after the attacks.
+We aim to improve the detection accuracy by statically extracting/enhancing each valuable region of the target to the CNN model.
 
-% In order to demonstrate \our argument, \we inspected the distribution of apps that communicate with DV servers.
-% In order to demonstrate \our argument, \we inspected the percentage of communication with the server to which each SSL server certificate is introduced.
-In order to demonstrate \our argument, \we inspected the percentage of apps communicating with DV servers.
-As shown in \figurename~\ref{fig:ssl_inspection}, there exists the difference of the percentage of communication with DV servers between benign apps and malwares.
-\begin{figure}[p]
-	\centering
-	\hspace{-55pt}
-	% \includegraphics[scale=0.34]{./figure/dv_unknown_inspection.pdf}
-	\includegraphics[scale=1.0, bb=9 9 200 200]{./figures/dv_unknown_inspection_tikz.pdf}
-	% \includegraphics[scale=0.34]{./figure/ssl_inspection.pdf}
-	\caption{The result of inspection regarding SSL server certificate} 
-	\label{fig:ssl_inspection}
+\figurename~\ref{fig:propAM} and \figurename~\ref{fig:propOM} show the manipulated area by adversaries and the area which have high degree of contribution for CNN to make decision on representative manipulated target.
+The red area in each target is the area which has been manipulated.
+In the case of AM, noise is added to the pixels, and in that of OM, the original BD is compressed or new code is inserted in these regions.
+On the other hand, the yellow area is where contributes to decision making still remaining after the attack.
+In the case of AM, it is the pixel region where noise cannot be added, and in that of OM, it is the byte sequence region which remain discretely after the compression.
+
+In each defense scheme, the detection accuracy can be improved by feeding those yellow region effectively to the CNN model.
+The representative schemes are explained in the following sections.
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.5]{./figures/propAM.pdf}
+ \caption{The valuable/manipulated regions in AM.} 
+ \label{fig:propAM}
+\end{figure}
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.5]{./figures/propOM.pdf}
+ \caption{The valuable/manipulated regions in OM.} 
+ \label{fig:propOM}
+\end{figure}
+%\afterpage{\clearpage}
+%\newpage
+
+\section{Defense scheme against AM}
+A defense scheme against AM, which is a malware whose GSI is manipulated, is explained in this section.
+
+We focus on the fact that the adversary can manipulate only the pixels which match the BD whose information is unnecessary at runtime.
+This is because the AM must maintain the original functionality of the malware even after the noise is added by the adversary.
+In our proposal, we call these pixels Junk Pixels (JPs), and we think it would be possible to remove the noise by converting their pixel values into 0, which means turning them black pixels.
+
+The two GSIs as shown in \figurename~\ref{fig:denoise} are the AM GSI with noise added by adversary and the that with denoising for JPs in our proposal.
+The red box area is the area where the pixel values are converted into 0 as JPs.
+This pixel region corresponds to the byte sequences which contain unnecessary information at runtime, such as metadata and debugging information used while linking.
+Thus, they can be regarded as pixels where the noise which contribute to benign decision can be added when AMs are created.
+
+On the other hand, yellow box area is the area with no manipulation in our proposal.
+This pixel area corresponds to the byte sequences that represents the malware behaviour and the data held.
+Thus, it is judged to hold valuable information for the classification since it is difficult to manipulate these byte sequences affecting the malware function for adversary without any destructions.
+Hence, we utilize JPs, which locate in this area, for our detection as it is.
+
+By doing this denoising process, the detection without being misled by AMs would be possible since only the pixels which tend to be not manipulated can be used for our classification.
+
+\begin{figure}[h]
+ \centering
+ %\hspace{-55pt}
+ \includegraphics[scale=0.5]{./figures/denoise.pdf}
+ \caption{The difference with before and after denoising AM GSI.} 
+ \label{fig:denoise}
+\end{figure}
+%\afterpage{\clearpage}
+\newpage
+\section{Defense scheme against OM}
+A defense scheme against OM, which is a malware whose BD is obfuscated with packing tools, is explained in this section.
+
+In this defense scheme, we focus on the fact that the appearing order of discrete byte sequences remaining after obfuscation is invariant before and after packing.
+Thus, showing the honrizontal connection of the byte sequences derived from the original BD can result in emphancizing valuable region remaining in OM for the CNN model.
+We realize it by convoluting the GSI pixels in the horizontal direction with 1D filters.
+
+I explain the method of convolution in the horizontal direction of pixels with a 1D Convolutional filter (1D Conv.), comparing with that in two dimentions with a 2D Convolutional filter (2D Conv.) filter in the previous scheme.
+\figurename~\ref{fig:2d} shows the flow of the previous method using 2D convolutional filters, such as this blue flame, which are commonly used in image analysis due to correlation in both horizontal and vertical directions.
+The figure with 6*6 squares in \figurename~\ref{fig:2d} represents the GSI, and each of them is a representaion of a pixel.
+In particular, the yellow pixels represent pixels valuable information and the gray pixels represent pixels which are not necessary for classification due to tool-dependency.
+Unlike common images, the correlation in the vertical direction is weak in GSIs since they are converted from byte sequences.
+Furthermore, by convoluting with such 2D filters, both pixels, yellow ones and gray ones, coexist in the same filter especially in the convolution of the boundary of those pixel regions.
+It can result in the false classification since the weight of valuable pixels in the decision becomes small in consequence of the useless pixels coexisting in the same filter.
+
+On the other hand, in our proposal, the GSI is convoluted using 1D filters with a horizontal length as shown in the red frame in \figurename~\ref{fig:1d}, which represents the flow of the proposal method.
+In our proposal, we can emphasize the byte regions which are valuable for classification by showing the correlation of the appearing order of discrete byte sequences remaining after obfuscation to the CNN model.
+Furthermore, it is possible to avoid the degradation of valuable pixel weight by the pixel which has coexisted in the vertical direction in the previous method at the boundary of both pixels.
+
+As described above, by using 1D filters to show the horizontal correlations between encrypted byte sequences, we can improve the detection accuracy by highlighting features retained in the OM which are valuable for training CNN model even under the static analysis.
+
+\begin{figure}[h]
+ \centering
+ %\hspace{-55pt}
+ \includegraphics[scale=0.5]{./figures/2d.pdf}
+ \caption{The flow of convolution with 2D Conv..} 
+ \label{fig:2d}
+\end{figure}
+\begin{figure}[h]
+ \centering
+ %\hspace{-55pt}
+ \includegraphics[scale=0.42]{./figures/1d.pdf}
+ \caption{The flow of convolution with 1D Conv..} 
+ \label{fig:1d}
 \end{figure}
 \afterpage{\clearpage}
 \newpage
-
-Moreover, \we discovered the servers whose the level of certificates is unknown because of refusing access to the servers or timeout (hereinafter, such servers are called "unknown servers").
-% \figurename~\label{fig:dist_unknown} shows the distribution of apps communicating with unknown servers.
-As shown in \figurename~\ref{fig:ssl_inspection}, in comparison to benign apps, malwares tend to communicate with the unknown servers.
-Thus, these results motivate us to extract SSL server certificate based features regarding DV and unknown servers.
-\We can obtain the useful features which are hard to be disguised because attackers cannot easily introduce EV and OV certificates to the their servers.
-Furthermore, \our features are applicable to encrypted data since they can be extracted without packet inspection.
-We mainly extract two types of features from each traffic data of an app.
-The first one is the total number of distinct IP address of untrusted servers, namely the DV and unknown servers because attackers tend to have several servers to evade detection.  
-The second one is the feature based on the frequency of communication with DV and unknown servers.
-As already mentioned in the Section \ref{sec:previous_scheme}, malwares tend to repeatedly try to communicate with untrusted servers of attackers compared with benign apps.
-Hence, \we utilize the frequency of communication with untrusted servers for malwares detection.  
-
-However, since benign apps also communicate with the untrussed servers, benign ones may be misjudged as malwares by using only SSL certificate based features.
-In order to cope with such situation, \we focus on the fact that malwares inevitably have to require the permissions regarding malicious actions.
-For example, malwares require a permission, READ\_PHONE\_STATE for obtaining device information.
-By using such permission, malwares can send such data to untrusted servers of attackers.
-Meanwhile, an app which does not have such permissions cannot send device information to external servers.
-% Since malwares try to send such data to untrusted servers of attackers, there exists relation between the level of SSL certificates of destination servers and required permissions.
-% Hence, required permissions are relevant to the level of SSL certificates of destination servers.  
-Hence, in order to exactly express malicious features, \we introduce required permission based weight values to SSL certificate based features.
-By doing this, \our scheme can reduce the misjudgement of the benign apps that communicate with untrusted servers.
-Finally, SSL certificate based features to which weight values are assigned are used for detection by machine learning classifier.
-
-\section{Algorithm}
-In this subsection, \we explain the algorithm for extracting \our features.
-The algorithm consists of four steps, namely network traffic collection, the level of SSL server certificate identification, SSL server certificate based feature generation and permission based weight assignment.
-
-\subsection{Network Traffic Collection} 
-Network traffic data of an app is captured in this step.  
-In order to capture the network traffic data, \we execute an app on an Android emulator device provided by Android Studio \cite{studio2016official}.
-\We execute a single app at one time on an emulator device to ensure that the exact network traffic data generated by each app is captured. 
-% Accordingly, no app runs in the background when collecting traffic data of an app. 
-\We then collect the network traffic packets of an app during the execution.
-The traffic data are saved as PCAP format files by using tcpdump command \cite{jacobson1989tcpdump}.
-
-\subsection{The Level of SSL Server Certificate identification} 
-In this step, the level of SSL server certificate of each destination server is obtained to identify IP addresses of DV and unknown servers.
-In order to confirm the level of SSL server certificate, IP addresses are extracted from PCAP format file by using T-shark command \cite{combs2017tshark}.  
-\We then obtain a SSL server certificate of the server which corresponds to each IP address by using openssl command \cite{openssl}.  
-In the EV and OV certificates, detailed geographic information of organizations is registered to certify the presence of organizations.
-Meanwhile, a DV certificate does not include such information since it is the certificate which authenticates only the authority for using domain.
-Thus, \we can judge whether each destination server is a DV server by focusing on the information registered in a certificate.  
-Furthermore, a server can be regarded as an unknown server when refusing access to the server or timeout errors occur.
-Accordingly, \we can identify IP addresses of both DV and unknown servers from among all destination servers by doing above procedures.
-
-\subsection{SSL Server Certificate based Feature Generation}
-SSL server certificate based features are calculated on the basis of IP addresses of DV and unknown servers.
-\We calculate the frequency of communication with DV and unknown servers and the total number of distinct IP addresses of DV and unknown destination servers.
-In terms of the frequency of communication, two types of the frequency are calculated by T-shark command.
-The first one is the frequency of communication for sending packets to an app from DV servers.
-The second one is the frequency of communication in the case where DV servers receive packets.
-% These features are categorized as frequency based features.  
-% The total number of distinct IP addresses of DV servers which communicate with an app is also calculated.
-Similarly, same procedures are conducted for IP addresses of unknown servers.
-
-\subsection{Permission based weight assignment}
-In this step, permission based weight value is assigned to SSL server certificate based features.
-First, \we have to calculate permission based weight values on the basis of the occurrence of permissions in the malicious train dataset in advance.
-\We focus on only the dangerous permissions defined by the Android specification since these permissions are related to sensitive actions.
-Let $\DANGEROUSPERMISSION = \{p_i|1\leq i \leq 24\}$ denote the set of dangerous permissions. 
-% The dangerous permissions required by the apps in $\MALWARETRAIN$ are extracted for calculating weight value.
-\We create $\MALWARETRAINPERMISSION$ which denotes the set of the malwares which request a dangerous permission $p_i$ in $\MALWARETRAIN$.
-Here, $\MALWARETRAIN$ is the set of all malwares in the training dataset.
-Then, \we create the set of the weight value for each permission $\WEIGHT = \{w_{p_i}|1\leq i \leq 24\}$.
-A weight value $w_{p_i}$ for dangerous permission $p_i$ is calculated as the following equation:
-\begin{equation}
-  w_{p_i} = \frac{|\MALWARETRAINPERMISSION|}{|\MALWARETRAIN|}.  
-\end{equation}
-% Here, $\MALWARETRAINPERMISSION$ is the set of the malwares which request a permission $p_i$.
-
-% For each app, the set of the all permissions required by each app $\APPPERMISSION = \{{p^{'}_j}|1\leq j \leq 300\}$ is created.
-\We obtain $\APPPERMISSION$ that indicates the sets of the dangerous permissions required by each app . 
-% , namely $\PERMISSIONINTER = \DANGEROUSPERMISSION \cap \APPPERMISSION$.
-$\APPPERMISSION$ is represented as the following equation: 
-\begin{equation} 
-  \APPPERMISSION =
-  \left\{
-    \begin{array}{ll} 
-      \{p_k|1\leq k \leq 24\} & (|\APPPERMISSION| > 0), \\
-      \phi & (|\APPPERMISSION| = 0).
-    \end{array}
-  \right.
-\end{equation}
-After that, $w_{p_i}$ are assigned to SSL server certificate based feature $\FSSL$ of each app on the basis of $\APPPERMISSION$.
-Accordingly, \our features are calculated as the following equation: 
-\begin{equation} 
-  f(\FSSL) = 
-  \left\{
-    \begin{array}{ll} 
-      \FSSL * (1+ {\displaystyle \sum_{k=1}^{|\PERMISSIONINTER|}} w_{p_k})  & (|\PERMISSIONINTER| > 0), \\
-      \FSSL & (|\PERMISSIONINTER| = 0).
-    \end{array}
-  \right.
-\end{equation}
 

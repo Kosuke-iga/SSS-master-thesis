@@ -1,51 +1,55 @@
 \chapter{Introduction}\markright{Chapter 1: Introduction}\label{Sec:Introduction}
 
-Android is the most popular smartphone platform occupying 85\% of market share in the world \cite{share}.
-Unfortunately, smartphones running on Android system have become the main target of attackers due to its popularity.
-Most malwares send sensitive information such as contact lists, SMS messages, GPS and device information to external servers via network. 
-The Android aaps released on Google Play which is the official store of apps are automatically evaluated because manual evaluation spends a lot of personnel expenses and more time.
-Since such evaluation cannot completely prevent malwares from spreading, users are under the risk of installing malwares.
-Thus, this circumstance results in the urgency of detecting Android malwares.
+In these days, the Internet of Things (IoT) is interconnetcting a large number of electronic devices with a variety of applications in our lives, such as smart appliances, smart houses, smart grid, energy management systems, and so on, at a tremendous speed.
+The number of the IoT devices is continuously increased.
+It is estimated to be about 50 billion all over the world by 2030 \cite{bg1, bg2}.
+They become targets of malware attacks due to the rapid increase and the development into devices which have interconnectivity in these days.
+Unfortunately, vulnerable IoT devices are spreading since the countermeasures cannot keep up with this trend of IoT malware attacks.
+\figurename~\ref{fig:mirai} represents an actual case of attack damage by malware called Mirai.
+In fact, as shown in \figurename~\ref{fig:mirai}, attacks against companies using many IoT devices infected with malware have become a problem, and the detection of IoT malware has become an urgent issue.
+Thus, this circumstance results in the urgency of detecting IoT malware.
 
-Existing solutions for detecting malwares are mainly classified into required resource based schemes \cite{enck2009lightweight, deshotels2014droidlegacy, xu2016iccdetector, sun2017monet} and network based schemes \cite{wang2018detecting, garg2017network}.
-Required resource based schemes are conducted by utilizing the features extracted from required resource such as permissions and application programming interface (API) calls.
-These schemes focus on the fact that malwares have to utilize required resource regarding malicious actions.
-Although required resource based schemes are useful, these schemes are subject to clever techniques such as dynamic code loading \cite{arora2018ntpdroid} and transformation attack \cite{zheng2012adam} \cite{rastogi2013droidchameleon}.
+\begin{figure}[t]
+ \centering
+ %\hspace{-55pt}
+ \includegraphics[scale=0.5]{./figures/mirai.pdf}
+ \caption{The case of attack damage by Mirai malware.} 
+ \label{fig:mirai}
+\end{figure}
+%\afterpage{\clearpage}
+%\newpage
+Existing solutions for detecting malware are mainly classified into router-side schemes \cite{net} and device-side schemes \cite{om, cfg}.
 
-In order to cope with the limitations of required resource based schemes, some researchers propose network based schemes.
-Network besed schemes pay attention to the fact that there exists strong evidence of malwares in network traffic data since most malwares communicate with external network to conduct malicious actions.
-These schemes can detect the malwares which use network to conduct malicious actions by using features regarding network behavior of Android apps.
-Although, several network based schemes have been proposed, \we pay attention to the scheme proposed by Garg et al. \cite{garg2017network}.
-This is because that scheme can deal with encrypted traffic data.
-More and more malwares tend to interact with external networks by using encrypted traffic in order to hide malicious payloads.
-Thus, it is necessary to extract useful features from malwares without deep packet inspection.
-That scheme leverages the fact that there exists the difference of network traffic patterns between benign apps and malwares.
-Network traffic pattern based features extracted from traffic data of running apps are fed into machine learning classifier, and it detects malwares.
-Although that shcme is a promising approach due to applicability to encrypted traffic data, traffic pattern based features are easy to be disguised by attackers.
-Hence, the malwares whose traffic patterns are similar to that of benign apps can evade that scheme.
+Router-side schemes pay attention to the fact that there exist strong evidences of malware in network traffic.
+This is because adversaries have to scan IoT devices and propagate their malware before attacking itself and these phases cause abnormal traffic which cannot be seen in benign case.
+Based on the fact, those scheme utilize the features extracted from incoming packets in the scanning/propagation phase such as destination IP address during a certain time, port number and so on, at a gateway of the network.
+Although router-side schemes are useful, these schemes are subject to internal attacks of the local network itself since the packets do not go through the router.
 
-In order to detect such malwares by using the features that can deal with encrypted traffic data and are hard to be disguised, in this paper, \we propose a detection scheme using features based on destination servers and the level of SSL server certificate.
-The main idea of our scheme is that malwares tend to communicate with untrusted destination servers in order to transfer encrypted malicious payloads such as sensitive information and malicious codes.
-Untrusted servers can be identified on the basis of the level of SSL server certificate.
-In order to encrypt traffic data, attackers have to introduce SSL server certificates to their servers.
-Attackers tend to use an untrusted certificate to encrypt malicious payloads in many cases since passing rigorous examination process is required to obtain a trusted certificate.
-Thus, \our scheme can detect malwares by using SSL server certificate based features since their servers tend to be untrusted.
-However, since benign apps also communicate with untrusted servers, the detection performance may be degraded.
-In order to eliminate such situation, \we introduce required permission base weight values to SSL server certificate based features because malwares inevitably have to require the permissions regarding malicious actions.
-By doing this, \our scheme can obtain the more exact features of malwares. 
-The contributions of this paper are as follows: 
+In order to cope with the limitations of router-side schemes, device-side schemes are proposed.
+Device-side schemes are conducted by utilizing the features extracted from malware itself at each IoT devices.
+Most of the device-side schemes utilze various features which can be extracted statically since IoT devices are not suitable for dynamic detections due to their limited computing and storage capabilities.
+Kumar et al. utilezes the features regarding to Control Flow Graphs (CFGs) acquired by complicated analysis and definitions of the features \cite{cfg}.
+Although that scheme can extract represantative features of the application, it is a time-consuming and laborious method due to the analysis for an enormous number of IoT malware.
 
-The rest of this paper is constructed as follows. 
-After this introduction, related works are introduced in Section \ref{sec:related_work}.
-The previous scheme and the shortcoming of that scheme are explained in Section \ref{sec:previous_scheme}.
+In order to cope with the spreading IoT malware with device-side detections, some researchers utilize Convolutional Neural Network (CNN) in their scheme.
+Su et al. utilezes GrayScale Image (GSI) converted from raw bytes of each malware binary for its CNN \cite{previous}.
+Although it is suitable for IoT malware detection since CNN can extract malware features from GSI automatically without feature engineering, it can be avoided with evasive techniques by adversaries to GSI or Binary Data (BD) of malware. 
+
+In order to detect such malware with exisiting evasive techniques, that is manipulated GSIs and BD, in this thesis, we propose an evasion-resilient IoT malware detection scheme with invalidating adversarial byte sequences and 1D convolutional filters.
+The main idea of our scheme is that the some regions which contribute to decision making in each manipulated target still remain after the evasive techniques by adverasaries. 
+This research aims to improve the detection accuracy by statically by statically extracting/enhancing each beneficial region of the manipulated target for the CNN model.
+
+The contributions of this thesis are as follows: 
+\begin{itemize}
+ \item I find the valuable regions which remain in adversarial malware and improve the detection accuracy of them by denoising procedure.
+ \item I find the valuable features which obfuscated malware have and improve the detection accuracy of them by emphasizeing their valuable regions to CNN model.
+ \item To the best of my knowledge, there is currenlty no reference to research defense schemes against the evasive techniques by adversaries. However, it is considered in this thesis, and, furthermore, give effective solutions.
+\end{itemize}
+
+The rest of this thesis is constructed as follows. 
+After this introduction, related work are introduced in Section \ref{sec:related_work}.
+The previous scheme and the issues of that scheme are explained in Section \ref{sec:previous_scheme}.
 Proposed scheme is described in Section \ref{sec:proposed_scheme}.
-Various evaluation results are their interpretation are shown in Section \ref{sec:evaluation}.
-Finally, the conclusions of this paper are presented in Section \ref{sec:conclusion}.
+Various evaluation results are shown in Section \ref{sec:evaluation}.
+Finally, the conclusions of this thesis are presented in Section \ref{sec:conclusion}.
 
-% \begin{enumerate}
-  % \item Thtough an inspection regarding communication with destination servers of apps, \we discovered that there exists the difference of the level of SSL server certificates introduced to destination servers between benign apps and malwares.
-  % \item In order to cope with recent trend of malwares which transfer encrypted data, \we propose a detection scheme using features based on destination servers and the level of SSL server certificate.
-    % \Our scheme can detect malwares by utilizing the useful features that are applicable to encrypted traffic data and are hard to be disguised.
-  % \item  \Our evaluation results show that \our scheme can improve detection performance in comparison to the previous scheme. 
-    % Furthermore, we clearly demonstrate that \our scheme can deal with the malwares transferring encrypted malicious payloads and the shortcoming of the previous scheme.
-% \end{enumerate} 
